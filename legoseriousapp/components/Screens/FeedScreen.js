@@ -100,7 +100,7 @@ export default class FeedScreen extends Component {
             <View>
                 <ScrollView contentContainerStyle={ styles.container }>
                     { currentFeed }
-                    <VideoBox />
+                    {/* <VideoBox /> */}
                 </ScrollView>
 
             </View>

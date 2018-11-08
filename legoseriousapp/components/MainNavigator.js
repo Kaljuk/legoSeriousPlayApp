@@ -4,6 +4,8 @@ import {
     Text,
     StyleSheet,
 
+    TouchableHighlight,
+
     Dimensions
 } from 'react-native';
 
@@ -11,19 +13,31 @@ import {
     createDrawerNavigator
 } from 'react-navigation';
 
-// Screens
+// // Screens
+// Introductary slides
+import LoadingScreen from './Screens/LoadingScreen';
+import SlideScreen from './Screens/SlideScreen';
 import HomeScreen from './Screens/HomeScreen';
 import FeedScreen from './Screens/FeedScreen';
+
+
 import GuessingGame from './GuessingGame';
+
+
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
 
 function TargetRect(props) {
+    console.log(props)
     return (
-        <View style={[ styles.targetBox, { borderColor: props.color } ]}>
-            <View style={ [styles.targetBoxFlag, { backgroundColor: props.color }]}></View>
-            <Text style={ styles.targetBoxText }>{props.text}</Text>
+        <View>
+            <TouchableHighlight onPress={ () => (props.onPress)?props.onPress() : console.log('Pressed', props.text)}>
+                <View  style={[ styles.targetBox, { borderColor: props.color } ]}>
+                    <View style={ [styles.targetBoxFlag, { backgroundColor: props.color }]}></View>
+                    <Text style={ styles.targetBoxText }>{props.text}</Text>
+                </View>
+            </TouchableHighlight>
         </View>
     )
 }
@@ -35,15 +49,18 @@ class DrawerContainer extends Component {
     render() {
         const { navigation } = this.props;
         const menuTabData = [
-            { color: "#003DA5", text: "Business" },
-            { color: "#E93CAC", text: "Education" }, // #ECB3CB
-            { color: "#A2E4B8", text: "Personal" },
-            { color: "#FFCD00", text: "Core" }
+            { color: "#003DA5", text: "Business",  target: 'Home' },
+            { color: "#E93CAC", text: "Education", target: 'Slides' }, // #ECB3CB
+            { color: "#A2E4B8", text: "Personal",  target: 'Game' },
+            { color: "#FFCD00", text: "Core", target: 'Feed' },
+            { color: "#192837", text: "Load", target: 'Loading' }
         ];
+
         const menuTabs = menuTabData.map( (data, id) => {
+            console.log(data.target)
             return (
                 <View key={id} style={{paddingTop: 10}}>
-                    <TargetRect color={ data.color } text={ data.text }/>
+                    <TargetRect color={ data.color } text={ data.text } onPress={() => navigation.navigate(data.target)}/>
                 </View>
             )
         })
@@ -103,14 +120,23 @@ const styles = StyleSheet.create({
 })
 
 const Navigator = createDrawerNavigator({
+    Loading: {
+        screen: LoadingScreen
+    },
     Home: {
+        screen: HomeScreen
+    },
+    Feed: {
         screen: FeedScreen
     },
     Game: {
         screen: GuessingGame
+    },
+    Slides: {
+        screen: SlideScreen
     }
 }, {
-    initialRouteName: 'Home',
+    initialRouteName: 'Loading',
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.25
 })

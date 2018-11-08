@@ -21,7 +21,7 @@ export default class GuessingGame extends Component {
 
     render() {
         
-        const picUrl = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/39762352_1043680182481202_1385387597345325056_o.png?_nc_cat=111&_nc_ht=scontent-arn2-1.xx&oh=38a7278b781cf2201013f75aa6ed6f60&oe=5C4B7FDF";
+        const picUrl = 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
 
         return (
             <View style={ styles.GameView }>
@@ -39,7 +39,7 @@ export default class GuessingGame extends Component {
                 {/* Options */}
                 <View style={ styles.AnswerBox }>
                     <TouchableHighlight onPress={() => console.log("Prssed picture")}>
-                        <Text>Option</Text>
+                        <Text>Options</Text>
                     </TouchableHighlight>     
                 </View>
             </View>
