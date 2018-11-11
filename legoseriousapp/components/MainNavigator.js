@@ -29,7 +29,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 
 function TargetRect(props) {
-    console.log(props)
+    // console.log(props)
     return (
         <View>
             <TouchableHighlight onPress={ () => (props.onPress)?props.onPress() : console.log('Pressed', props.text)}>
@@ -50,14 +50,14 @@ class DrawerContainer extends Component {
         const { navigation } = this.props;
         const menuTabData = [
             { color: "#003DA5", text: "Business",  target: 'Home' },
-            { color: "#E93CAC", text: "Education", target: 'Slides' }, // #ECB3CB
+            { color: "#E93CAC", text: "Slides|Education", target: 'Slides' }, // #ECB3CB
             { color: "#A2E4B8", text: "Personal",  target: 'Game' },
             { color: "#FFCD00", text: "Core", target: 'Feed' },
             { color: "#192837", text: "Load", target: 'Loading' }
         ];
 
         const menuTabs = menuTabData.map( (data, id) => {
-            console.log(data.target)
+            // console.log(data.target)
             return (
                 <View key={id} style={{paddingTop: 10}}>
                     <TargetRect color={ data.color } text={ data.text } onPress={() => navigation.navigate(data.target)}/>
@@ -136,7 +136,7 @@ const Navigator = createDrawerNavigator({
         screen: SlideScreen
     }
 }, {
-    initialRouteName: 'Loading',
+    initialRouteName: 'Slides',
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.25
 })
