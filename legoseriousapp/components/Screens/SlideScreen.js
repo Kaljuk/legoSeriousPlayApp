@@ -45,14 +45,15 @@ class SlideNav extends Component {
             delay: 1000
         }).start();
 
-        console.log("Routes:", routes, navigation.state.index)
+        // console.log("Routes:", routes, navigation.state.index)
         // console.log("Nav:", navigation)
+        
         return (
             <View style={ styles.navContainer }>
                 <Animated.View style={[styles.navOuterCircle, { borderWidth: this.state.bw } ]}>
                     <View style={ styles.navInnerCircle }></View>    
-                </Animated.View>
                 { (routes || []).map((route, id) => <Text style={{ backgroundColor: ((navigation.state.index === id) ? 'blue' : 'green'), textAlign: 'center' }} key={id}>Sisukas {route.routeName} {navigation.state.index}</Text>)}
+                </Animated.View>
             </View>
         )
     }
@@ -98,7 +99,7 @@ export default class SlideScreen extends Component {
     }
     render() {
         return (
-            <View style={{ backgroundColor: 'red', flex: 1, paddingTop: 10}}>
+            <View style={{ backgroundColor: 'red', flex: 1 }}>
                 <SlideNavigation></SlideNavigation>
             </View>
         )
@@ -110,7 +111,7 @@ export default class SlideScreen extends Component {
 
 const styles = StyleSheet.create({
     navContainer: { 
-        backgroundColor: 'red',
+        backgroundColor: 'blue',
         position: "absolute",
         width: '100%',
         justifyContent: 'center',
