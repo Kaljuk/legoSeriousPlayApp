@@ -3,160 +3,137 @@ import {
     View, 
     StyleSheet,
 
-    Image, ImageBackground, 
     Text,
-    Button,
-    TouchableHighlight, TouchableOpacity,
-    
-    ScrollView,
-    Dimensions
+
+    Animated
 } from 'react-native';
 
-const { width } = Dimensions.get("window");
+import {
+    createMaterialTopTabNavigator,
+} from 'react-navigation';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+
+// My Modules
+import Slide from '../Slide';
 
 
+class SlideNav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.state.bw = new Animated.Value(0);
 
-class SlidePicture extends Component {
-  constructor(props) {
-      super(props);
-  }
-  render() {
-      const imgUrl = this.props.pictureURI || 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
+    }
 
-      return (
-        <View style={ [styles.FeedBox] }>
-          {/* <Image style={styles.FeedBoxPicture} source={{ uri: imgUrl }}> </Image> */}
-          <ImageBackground style={styles.FeedBoxPicture} source={{ uri: imgUrl }}></ImageBackground>
-          
-          <View style={styles.FeedBoxPictureTextBox}>
-              <Text>{this.props.description || "Photo description"}</Text>
-          </View>
-        </View>
-      )
-  }
-}
-
-class SlideText extends Component {
-  constructor(props) {
-      super(props);
-      this.prev = this.prev.bind(this);
-  }
-
-  prev() {
-    if (this.props.prev) this.props.prev()
-    else console.log("NO PREV")
-  }
-
-  render() {
     
-      return (
-        <View style={ styles.FeedBox }>
-          <ScrollView style={{}}>
-            <View style={[{ marginBottom: 50 }]}>
-              {/* Title */}
-              <Text style={[ /*styles.FeedBoxPictureText*/, { fontSize: 30, fontWeight: 'bold', textAlign: 'center' } ]}>{this.props.title || "Lorem Ipsum Title"}</Text>
-              {/* Content */}
-              <Text style={{ paddingHorizontal: "10%" }}>{this.props.text ||
-                "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."              
-              }</Text>
+
+    render() {
+        const {
+            navigation,
+            renderIcon,
+            activeTintColor,
+            inactiveTintColor,
+            jumpToIndex
+        } = this.props;
+        
+        const { routes } = (navigation || {}).state || {};
+        
+        Animated.timing(this.state.bw, { 
+            toValue: 2,
+            duration: 1500,
+            delay: 1000
+        }).start();
+
+        console.log("Routes:", routes, navigation.state.index)
+        // console.log("Nav:", navigation)
+        return (
+            <View style={ styles.navContainer }>
+                <Animated.View style={[styles.navOuterCircle, { borderWidth: this.state.bw } ]}>
+                    <View style={ styles.navInnerCircle }></View>    
+                </Animated.View>
+                { (routes || []).map((route, id) => <Text style={{ backgroundColor: ((navigation.state.index === id) ? 'blue' : 'green'), textAlign: 'center' }} key={id}>Sisukas {route.routeName} {navigation.state.index}</Text>)}
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor:'green' }}>
-              
-            <View style={{ width: "50%", height: 50}}>
-                <TouchableOpacity  style={{ width: "100%", height: "100%", backgroundColor: '#9BBBD8', alignContent:'center', justifyContent: 'center' }} title="<" onPress={() => this.prev()}>
-                    <Text style={{textAlign:'center'}}>{"<"}</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{ width: "50%", height: 50}}>
-                <TouchableOpacity  style={{ width: "100%", height: "100%", backgroundColor: '#9BBBD8', alignContent:'center', justifyContent: 'center' }} title="<" onPress={() => console.log('PREV')}>
-                    <Text style={{textAlign:'center'}}>{">"}</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </ScrollView>
-        </View>
-      )
-  }
+        )
+    }
 }
+
+const tintColor = '#6666C1';
+const SlideNavigation = createMaterialTopTabNavigator({
+    Slide1: {
+        screen: Slide
+    },
+    Slide2: {
+        screen: Slide
+    }
+
+},{
+    initialRouteName: 'Slide1',
+    //order: ['Feed', 'Groups', 'Tasks', 'Profile'],
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+        activeTintColor: '#1d4457',
+        inactiveTintColor: '#b3d2ee',
+        style: {
+            backgroundColor: '#ddd'
+        },
+        showIcon: true,
+        showLabel: false,
+    },
+    tabBarComponent: (props) => <SlideNav {...props} />
+});
+
+
+
+
+
 
 export default class SlideScreen extends Component {
     constructor(props) {
         super(props);
-
     }
 
     nextSlide() {
       
     }
-
     render() {
-        const data = [
-            {title: "Mind game"}, 
-            {title: "practical game"},
-            {title: "Some other content"}
-        ];
-        const currentFeed = data.map( (d, key) => {
-            return (
-                <SlidePicture key={key} title={d.title} />
-            )
-        })
         return (
-            <View>
-                {/* { currentFeed } */}
-                <SlidePicture></SlidePicture>
-                <SlideText></SlideText>
+            <View style={{ backgroundColor: 'red', flex: 1, paddingTop: 10}}>
+                <SlideNavigation></SlideNavigation>
             </View>
         )
     }
 }
 
 
+
+
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 60,
-        paddingBottom: 100,
-        paddingHorizontal: 15,
-        // flex: 1,
+    navContainer: { 
+        backgroundColor: 'red',
+        position: "absolute",
+        width: '100%',
+        justifyContent: 'center',
+        alignContent: 'center',
+        bottom: 0
+    },
+    navOuterCircle: {
+        height: 20,
+        width:  20,
+        // backgroundColor: 'yellow',
+        borderRadius: 90,
+        borderWidth: 3,
+        borderColor: 'orange',
         alignItems: 'center',
-        // backgroundColor: '#F5F5F5',
-        // paddingTop: 80,
-        // paddingHorizontal: "4%"
+        justifyContent: 'center',
+        borderStyle: 'dashed'
     },
-
-    FeedBox: {
-        elevation: 2,
-        // maxHeight: "60%",
-        height: 300,
-        width: "100%",
-        paddingHorizontal: 15,
-        paddingTop: 15,
-
-        alignItems: 'center',
-        marginTop: 20,
-
-        backgroundColor: 'white',
-        borderColor: 'white',
-        borderRadius: 1,
-        borderWidth: 0
-    },
-    FeedBoxPicture: {
-        // margin: "3%",
-        // resizeMode: 'cover',
-        backgroundColor: 'white',
-        height: "90%",
-        width: "100%"
-    },
-    FeedBoxPictureTextBox: {
-        height: "100%",
-        width: "100%"
-    }, 
-    FeedBoxPictureText: {
-        height: "100%", 
-        width: "100%", 
-        fontSize: 24, 
-        fontWeight: 'bold', 
-        // backgroundColor: 'green', 
-        alignContent: 'center', 
-        justifyContent: 'center' 
+    navInnerCircle: {
+        height: "50%",
+        width:  "50%",
+        backgroundColor: 'yellow',
+        borderRadius: 90,
+        borderWidth: 0,
+        borderColor: 'brown'
     }
 })
