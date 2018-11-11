@@ -21,16 +21,17 @@ class SlidePicture extends Component {
       super(props);
   }
   render() {
-      const imgUrl = this.props.pictureURI || 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
+    //   const imgUrl = this.props.pictureURI || 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
 
       return (
-        <View style={ [styles.FeedBox] }>
+        <View style={[ styles.slidePictureContainer, { backgroundColor: this.props.color || 'white' } ]}>
           {/* <Image style={styles.FeedBoxPicture} source={{ uri: imgUrl }}> </Image> */}
-          <ImageBackground style={styles.FeedBoxPicture} source={{ uri: imgUrl }}></ImageBackground>
-          
-          <View style={styles.FeedBoxPictureTextBox}>
+          {/* <ImageBackground style={{ width: "100%", height: "100%", borderRadius: Math.round(Dimensions.get('window').height) }} source={{ uri: imgUrl }}></ImageBackground> */}
+          {/* <View style={styles.FeedBoxPictureTextBox}>
               <Text>{this.props.description || "Photo description"}</Text>
-          </View>
+          </View> */}
+          {/* <View style={{ height: "100%", width: "100%", backgroundColor: 'red', borderRadius: Math.round(Dimensions.get('window').height) }}></View> */}
+          { this.props.image && <Image style={{ width: "100%", height: "100%", resizeMode: 'cover', borderRadius: Math.round(Dimensions.get('window').height)/2 }} source={{ uri: this.props.image }} />}
         </View>
       )
   }
@@ -39,39 +40,20 @@ class SlidePicture extends Component {
 class SlideText extends Component {
   constructor(props) {
       super(props);
-      this.prev = this.prev.bind(this);
   }
 
-  prev() {
-    if (this.props.prev) this.props.prev()
-    else console.log("NO PREV")
-  }
 
   render() {
     
       return (
         <View style={ styles.FeedBox }>
           <ScrollView style={{}}>
-            <View style={[{ marginBottom: 50 }]}>
-              {/* Title */}
-              <Text style={[ /*styles.FeedBoxPictureText*/, { fontSize: 30, fontWeight: 'bold', textAlign: 'center' } ]}>{this.props.title || "Lorem Ipsum Title"}</Text>
-              {/* Content */}
-              <Text style={{ paddingHorizontal: "10%" }}>{this.props.text ||
+            <View style={[{ marginBottom: 0 }]}>
+
+              <Text style={[ { fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: 'white', marginBottom: 20, marginTop: 15 } ]}>{this.props.title || "Lorem Ipsum Title"}</Text>
+              <Text style={{ paddingHorizontal: "10%", textAlign: 'center', color: 'white' }}>{this.props.text ||
                 "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."              
               }</Text>
-            </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor:'green' }}>
-              
-            <View style={{ width: "50%", height: 50}}>
-                <TouchableOpacity  style={{ width: "100%", height: "100%", backgroundColor: '#9BBBD8', alignContent:'center', justifyContent: 'center' }} title="<" onPress={() => this.prev()}>
-                    <Text style={{textAlign:'center'}}>{"<"}</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{ width: "50%", height: 50}}>
-                <TouchableOpacity  style={{ width: "100%", height: "100%", backgroundColor: '#9BBBD8', alignContent:'center', justifyContent: 'center' }} title="<" onPress={() => console.log('PREV')}>
-                    <Text style={{textAlign:'center'}}>{">"}</Text>
-                </TouchableOpacity>
-              </View>
             </View>
           </ScrollView>
         </View>
@@ -85,25 +67,21 @@ export default class Slide extends Component {
         console.log('Show slide')
     }
 
-    nextSlide() {
-      
-    }
-
     render() {
         const data = [
             {title: "Mind game"}, 
             {title: "practical game"},
             {title: "Some other content"}
         ];
-        const currentFeed = data.map( (d, key) => {
-            return (
-                <SlidePicture key={key} title={d.title} />
-            )
-        })
+        const themeColor = this.props.color || "#7AC133";
+        const circleColor= this.props.darkColor || "#5d9427";
+        const pictureUrl = this.props.picture || 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
+
         return (
-            <View>
+            <View style={[ styles.slideBox, { backgroundColor: themeColor || '#7AC133' } ] }>
                 {/* { currentFeed } */}
-                <SlidePicture></SlidePicture>
+                {/* SlidePicture makes it slow */}
+                <SlidePicture color={circleColor} image={pictureUrl}></SlidePicture>
                 <SlideText></SlideText>
             </View>
         )
@@ -112,33 +90,31 @@ export default class Slide extends Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 60,
-        paddingBottom: 100,
-        paddingHorizontal: 15,
-        // flex: 1,
+    slideBox: {
+        flex: 1,
         alignItems: 'center',
+        backgroundColor: 'green',
+        paddingTop: "15%"
         // backgroundColor: '#F5F5F5',
         // paddingTop: 80,
         // paddingHorizontal: "4%"
     },
 
-    FeedBox: {
+    slidePictureContainer: {
         elevation: 2,
         // maxHeight: "60%",
-        height: 300,
-        width: "100%",
-        paddingHorizontal: 15,
-        paddingTop: 15,
-
+        height: 335,
+        width:  335,
+        
         alignItems: 'center',
-        marginTop: 20,
+        // marginTop: "15%",
 
         backgroundColor: 'white',
         borderColor: 'white',
-        borderRadius: 1,
-        borderWidth: 0
+        borderRadius: Math.round(Dimensions.get('window').height/2),
+        borderWidth: 1
     },
+
     FeedBoxPicture: {
         // margin: "3%",
         // resizeMode: 'cover',
