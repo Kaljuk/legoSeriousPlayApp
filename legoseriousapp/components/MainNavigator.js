@@ -148,8 +148,6 @@ export default class MainNavigator extends Component {
         this.state = {
             currentActivity: 'none'
         }
-
-
         console.log("loading")
     }
 
