@@ -3,14 +3,38 @@ import {
   StyleSheet, Text, View 
 } from 'react-native';
 
+import {
+  Font
+} from 'expo';
+
 // Custom Components
 import MainNavigator from './components/MainNavigator';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontLoaded: false
+    };
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Ubuntu': require('./assets/fonts/Ubuntu/Ubuntu-Regular.ttf'),
+    });
+
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
     return (
       <View>
-        <MainNavigator />
+        { 
+          ( 
+            this.state.fontLoaded && 
+            <MainNavigator />
+          ) || null
+        }
       </View>
     );
   }
