@@ -26,7 +26,7 @@ import FeedScreen from './Screens/FeedScreen';
 import GuessingGame from './GuessingGame';
 
 // Greeting and Branch Selection Screen
-import Branch from './Screens/BranchScreen';
+import PathsScreen from './Screens/PathScreen';
 
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -140,11 +140,11 @@ const Navigator = createDrawerNavigator({
         screen: SlideScreen
     },
     /** Greeting and Branch Selection Screen */
-    Branches: {
-        screen: Branch
+    Paths: {
+        screen: PathsScreen
     }
 }, {
-    initialRouteName: 'Branches',
+    initialRouteName: 'Paths',
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.25
 })
