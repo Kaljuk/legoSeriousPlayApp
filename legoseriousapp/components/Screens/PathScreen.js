@@ -12,6 +12,10 @@ import {
 
 } from 'react-native';
 
+// My components
+import PathContentScreen from './SubScreens/PathContentScreen';
+
+
 import Icon from 'react-native-vector-icons/Octicons';
 const MenuIcon = () => (
   <Icon 
@@ -20,6 +24,9 @@ const MenuIcon = () => (
     color='#000' 
   />
 );
+
+
+
 
 
 export default class PathsScreen extends Component {
@@ -50,8 +57,9 @@ export default class PathsScreen extends Component {
           {/* SideMenu button */}
           <SideMenuButton callable={ this.openNavigator } />
 
-          { null && 
-              <PathSelection />
+          { true && 
+              // <PathSelection />
+              <PathContentScreen />
             ||
               <PathChoose description={description} />
           }
