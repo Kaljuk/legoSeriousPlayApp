@@ -50,8 +50,8 @@ class SlideText extends Component {
           <ScrollView style={{}}>
             <View style={[{ marginBottom: 0 }]}>
 
-              <Text style={[ { fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: 'white', marginBottom: 20, marginTop: 15 } ]}>{this.props.title || "Lorem Ipsum Title"}</Text>
-              <Text style={{ paddingHorizontal: "10%", textAlign: 'center', color: 'white' }}>{this.props.text ||
+              <Text style={[ { fontSize: 24, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Ubuntu', color: 'white', marginBottom: 20, marginTop: 15 } ]}>{this.props.title || "Lorem Ipsum Title"}</Text>
+              <Text style={{ paddingHorizontal: "10%", textAlign: 'center', fontFamily: 'Ubuntu', color: 'white' }}>{this.props.text ||
                 "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."              
               }</Text>
             </View>
@@ -64,12 +64,14 @@ class SlideText extends Component {
 export default class Slide extends Component {
     constructor(props) {
         super(props);
-        console.log('Show slide')
+        // console.log('Show slide: ', props)
+        // console.log("hihi:", props);
+        
     }
 
     render() {
         const data = [
-            {title: "Mind game"}, 
+            {title: "LEGO® Serious Play®", text: 'Use LEGO Bricks to Make Sense of Yourself and Communicate Better with Others'}, 
             {title: "practical game"},
             {title: "Some other content"}
         ];
@@ -77,12 +79,15 @@ export default class Slide extends Component {
         const circleColor= this.props.darkColor || "#5d9427";
         const pictureUrl = this.props.picture || 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
 
+        const title = this.props.title || 'NoTitle';
+        const text  = this.props.text  || 'NoText';
+
         return (
             <View style={[ styles.slideBox, { backgroundColor: themeColor || '#7AC133' } ] }>
                 {/* { currentFeed } */}
                 {/* SlidePicture makes it slow */}
                 <SlidePicture color={circleColor} image={pictureUrl}></SlidePicture>
-                <SlideText></SlideText>
+                <SlideText title={title} text={text} />
             </View>
         )
     }

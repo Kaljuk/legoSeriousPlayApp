@@ -16,13 +16,17 @@ import {
 // // Screens
 // Introductary slides
 import LoadingScreen from './Screens/LoadingScreen';
+// Slides @todo:
 import SlideScreen from './Screens/SlideScreen';
+// Home @todo:
 import HomeScreen from './Screens/HomeScreen';
+// Feed @todo:
 import FeedScreen from './Screens/FeedScreen';
-
 
 import GuessingGame from './GuessingGame';
 
+// Greeting and Branch Selection Screen
+import PathsScreen from './Screens/PathScreen';
 
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -51,7 +55,7 @@ class DrawerContainer extends Component {
         const menuTabData = [
             { color: "#003DA5", text: "Business",  target: 'Home' },
             { color: "#E93CAC", text: "Slides|Education", target: 'Slides' }, // #ECB3CB
-            { color: "#A2E4B8", text: "Personal",  target: 'Game' },
+            { color: "#A2E4B8", text: "Branches",  target: 'Branches' },
             { color: "#FFCD00", text: "Core", target: 'Feed' },
             { color: "#192837", text: "Load", target: 'Loading' }
         ];
@@ -134,12 +138,19 @@ const Navigator = createDrawerNavigator({
     },
     Slides: {
         screen: SlideScreen
+    },
+    /** Greeting and Branch Selection Screen */
+    Paths: {
+        screen: PathsScreen
     }
 }, {
-    initialRouteName: 'Slides',
+    initialRouteName: 'Paths',
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.25
 })
+
+
+
 
 
 export default class MainNavigator extends Component {
@@ -155,7 +166,7 @@ export default class MainNavigator extends Component {
         
         return (
             <View style={{ width: "100%", height: "100%", backgroundColor: '#fff'}}>
-                <Navigator></Navigator>
+                <Navigator />
             </View>
         )
     }
