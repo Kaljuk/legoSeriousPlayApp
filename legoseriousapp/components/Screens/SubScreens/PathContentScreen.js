@@ -1,12 +1,10 @@
 
 import React, { Component } from 'react';
 import {
-    View, 
-    StyleSheet,
+    View,
 
     Image, ImageBackground, 
     Text,
-    Button,
     TouchableHighlight, TouchableOpacity
 
 } from 'react-native';
@@ -22,52 +20,69 @@ export default class PathContentScreen extends React.Component {
 
     render() {
         // Title of the current path
-        const title = this.props.title;
+        const title = this.props.title || 'NoTitle';
+        // Colors
+        const mainColor = this.props.mainColor || '#4f4f94';
+        const secondaryColor = this.props.secondaryColor || '#3d3d72';
+        
         // Icon = picture on the content button, isNew: has the user clicked on it before?
-        const rowOne = [{ name: 'Tutorial', icon: null, isNew: false }]
-        const rowTwo = [{ name: 'Bricks', icon: null, isNew: true }, { name: 'Collab Game', icon: null, isNew: true }]
-        const fillerContent = [rowOne, rowTwo];
+        const rowOne = [{ title: 'Tutorial', icon: null, isNew: false }]
+        const rowTwo = [{ title: 'Video', icon: null, isNew: false }]        
+        const rowThree = [{ title: 'Infographic', icon: null, isNew: true }, { title: 'Infographic', icon: null, isNew: true }]
+        const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true }]
+        
+        const fillerContent = [rowOne, rowTwo, rowThree, rowFour];
 
         const content = this.props.content || fillerContent;
-        const komment = `
-        const contentRows = content.map( (rows=[], id)=> {
-            console.log('Filler:', content)
-            const renderableButtons = contentRows.map( (contentButton={}, id) => {
-                
+        // console.log('Content', content);
+        
+        const pathElements = content.map( (elementRow=[], elementRowId) => {
+            
+            const elements = elementRow.map( (element={}, elementId) => {
                 return (
-                    <View key={id} style={{ backgroundColor: 'red' }}>
-                        {/* CircleLogo */}
-                        <View></View>
-                        {/* Button title */}
-                        <Text style={{ fontSize: 50 }}> { contentButton.title || 'Tiitel' } </Text>
-                    </View>
-                )    
-            });
-            const rendereableRows = contentRows.map( (row, id) => {
-                return (
-                    <View key={ id } style={{ flex:1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                        { renderableButtons }
-                    </View>
+                    <TouchableOpacity  key={ elementId } style={{ 
+                        height: 100,
+                        width : 100,
+                        marginHorizontal: 5,
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                    }}>
+                        <View style={{
+                            height: 80,
+                            width : 80,
+                            borderRadius: 40,
+                            backgroundColor: secondaryColor
+                        }}></View>
+                        <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 4 }}>
+                            <Text style={{ fontFamily: 'Ubuntu', fontSize: 14, color: 'white' }} numberOfLines={1}> { element.title || 'Tiitel'} </Text>
+                        </View>
+                    </TouchableOpacity>
                 )
             })
-            const renderableContent = (
-                <View key={id} style={{ flexDirection: 'column' }}>
-                    { rendereableRows }
-                    <Text>Sisukas sisu</Text>
+
+            return (
+                <View key={elementRowId} style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    marginTop: 15
+                }}>
+                    { elements }
                 </View>
             )
-            return renderableContent;
         })
-        `
+        
         return (
-            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'blue' }}>
+            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: mainColor }}>
                 {/* Header with nav button */}
-                <View style={{ flex: 0.2, backgroundColor: 'red' }}>
-                    <Text> { title || 'PuudubTitle'} </Text>
+                <View style={{ 
+                    flex: 0.18, flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', 
+                    paddingBottom: 10
+                }}>
+                    <Text style={{ fontFamily: 'Ubuntu', fontSize: 24, fontWeight: 'bold', color: 'white' }}> { (title || 'Core').toUpperCase() } </Text>
                 </View>
                 {/* Contents Container */}
-                <View style={{ flex: 0.8, backgroundColor: 'green' }}>
-                    { contentRenderable }
+                <View style={{ flex: 0.8 }}>
+                    { pathElements }
                 </View>
             </View>
         )
