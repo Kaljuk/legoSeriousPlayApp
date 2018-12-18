@@ -46,6 +46,11 @@ export default class PathsScreen extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+    const { content } = [];//this.props.navigation.state.params;
+    console.log('proPPeS', this.props );
+    console.log('Params', navigation.getParam('test', 'NO-ID') );
+    
 
     const description = 'Pellentesque tempus elit sed ante. Nunc am lectus at egestas laoreet. Sed your purpose, tempus elit sed.';
 
@@ -59,7 +64,7 @@ export default class PathsScreen extends Component {
 
           { true && 
               // <PathSelection />
-              <PathContentScreen />
+              <PathContentScreen content={ content }/>
             ||
               <PathChoose description={description} />
           }
