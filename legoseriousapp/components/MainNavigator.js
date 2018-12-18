@@ -4,7 +4,7 @@ import {
     Text,
     StyleSheet,
 
-    TouchableHighlight,
+    TouchableHighlight, 
 
     Dimensions
 } from 'react-native';
@@ -26,7 +26,7 @@ import FeedScreen from './Screens/FeedScreen';
 import GuessingGame from './GuessingGame';
 
 // Greeting and Branch Selection Screen
-import PathsScreen from './Screens/PathScreen';
+import PathScreen from './Screens/PathScreen';
 
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -36,7 +36,7 @@ function TargetRect(props) {
     // console.log(props)
     return (
         <View>
-            <TouchableHighlight onPress={ () => (props.onPress)?props.onPress() : console.log('Pressed', props.text)}>
+            <TouchableHighlight onPress={ () => (props.onPress) ? props.onPress() : console.log('Pressed', props.text)}>
                 <View  style={[ styles.targetBox, { borderColor: props.color } ]}>
                     <View style={ [styles.targetBoxFlag, { backgroundColor: props.color }]}></View>
                     <Text style={ styles.targetBoxText }>{props.text}</Text>
@@ -49,7 +49,15 @@ function TargetRect(props) {
 class DrawerContainer extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            pressedTab: -1
+        }
     }
+
+    isHovering(tabId) {
+        this.setState({ pressedTab: tabId })
+    }
+
     render() {
         const { navigation } = this.props;
         const menuTabData = [
@@ -60,6 +68,75 @@ class DrawerContainer extends Component {
             { color: "#192837", text: "Load", target: 'Loading' }
         ];
 
+        /** 
+         * Profile   -> ProfileScreen
+         * 
+         * Core      -> PathScreen + props 
+         * Personal  -> PathScreen + props
+         * Education -> PathScreen + props
+         * Business  -> PathScreen + props
+         * 
+         * Sound     -> (>NoPath<) + static mute button
+         * 
+         * About     -> AboutScreen
+        */
+        const routes = [
+            // // Profile
+            { 
+                title: 'Profile', 
+                screen: null, 
+                mainColor: null, 
+                secondaryColor: null,
+                content: []
+            },
+            // // Paths
+            // Core
+            { 
+                title: 'Core', 
+                screen: 'Path', 
+                mainColor: '#f9c137', 
+                secondaryColor: '#bf942a',
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+            },
+            // Personal
+            { 
+                title: 'Personal', 
+                screen: 'Path', 
+                mainColor: '#88c9b3', 
+                secondaryColor: '#699a89',
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+            },
+            // Education
+            { 
+                title: 'Education', 
+                screen: 'Path', 
+                mainColor: '#b06495', 
+                secondaryColor: '#874d72',
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+            },
+            // Business
+            { 
+                title: 'Business', 
+                screen: 'Path', 
+                mainColor: '#4f4f94', 
+                secondaryColor: '#3d3d72',
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+            },
+            // // Settings
+            { 
+                title: 'Settings', 
+                screen: 'Settings', 
+                mainColor: null, 
+                secondaryColor: null,
+                content: []
+            }
+            // // Sound
+
+            // // About
+        ]
+        // console.log('Props', this.props);
+        
+
         const menuTabs = menuTabData.map( (data, id) => {
             // console.log(data.target)
             return (
@@ -68,9 +145,35 @@ class DrawerContainer extends Component {
                 </View>
             )
         })
+        
+        const tabs = routes.map( (route, id) => {
+            console.log(`Route: ${route.title} Screen: ${route.screen}`);
+            
+            const navigateToRoute = route.screen && (() => navigation.navigate( route.screen, {test: 'sisukassisu'})) || (() => console.log('No Screen Assigned'));
+            const isHighlighted = (id === this.state.pressedTab);
+            const textColor = (isHighlighted) ? '#fff' : '#808080';
+            return (
+                <TouchableHighlight key={id} onPressIn={()=>this.isHovering(id)} onPressOut={()=>this.isHovering(-1)} onPress={() => navigateToRoute()} style={{ flex: 0.1, flexDirection: 'column', justifyContent:'center', backgroundColor: 'blue' }} underlayColor={ route.mainColor || '#808080' }>
+                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingLeft: 10, backgroundColor: 'red' }}>
+                        {/* Icon / Logo */}
+                        <View><Text> O </Text></View>
+                        {/* Route Name */}
+                        <Text style={{ fontFamily: 'Ubuntu', fontSize: 18, color: textColor }}>{ route.title }</Text>
+                    </View>
+                </TouchableHighlight>
+            )
+        })
+
         return (
-            <View style={ styles.container }>
-                { menuTabs }
+            <View style={{
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'space-evenly',
+                // alignItems: 'center',
+                backgroundColor: 'white',
+                paddingTop: 40
+            }}>
+                { tabs }
             </View>
         )
     }
@@ -103,13 +206,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'        
     },
     
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: 'white',
-      paddingTop: 80,
-      paddingHorizontal: 5
-    },
+    
     uglyDrawerItem: {
       fontSize: 18,
       fontWeight: 'bold',
@@ -123,33 +220,57 @@ const styles = StyleSheet.create({
     }
 })
 
+
+// const Navigator = createDrawerNavigator({
+//     Loading: {
+//         screen: LoadingScreen
+//     },
+//     Home: {
+//         screen: HomeScreen
+//     },
+//     Feed: {
+//         screen: FeedScreen
+//     },
+//     Game: {
+//         screen: GuessingGame
+//     },
+//     Slides: {
+//         screen: SlideScreen
+//     },
+//     /** Greeting and Branch Selection Screen */
+//     Paths: {
+//         screen: PathsScreen
+//     }
+// }, {
+//     initialRouteName: 'Paths',
+//     contentComponent: DrawerContainer,
+//     drawerWidth: DEVICE_WIDTH * 0.70
+// })
+
 const Navigator = createDrawerNavigator({
-    Loading: {
+    LoadingScreen: {
         screen: LoadingScreen
     },
-    Home: {
-        screen: HomeScreen
+    Profile: {
+        screen: LoadingScreen // ProfileScreen
     },
-    Feed: {
-        screen: FeedScreen
+    Path: {
+        screen: PathScreen
+    },
+    Settings: {
+        screen: SlideScreen // SettingsScreen
+    },
+    About: {
+        screen: PathScreen // AboutScreen
     },
     Game: {
-        screen: GuessingGame
-    },
-    Slides: {
-        screen: SlideScreen
-    },
-    /** Greeting and Branch Selection Screen */
-    Paths: {
-        screen: PathsScreen
+        screen: GuessingGame // Game Screen
     }
 }, {
-    initialRouteName: 'Paths',
+    initialRouteName: 'Path',
     contentComponent: DrawerContainer,
-    drawerWidth: DEVICE_WIDTH * 0.25
+    drawerWidth: DEVICE_WIDTH * 0.70
 })
-
-
 
 
 
@@ -166,7 +287,7 @@ export default class MainNavigator extends Component {
         
         return (
             <View style={{ width: "100%", height: "100%", backgroundColor: '#fff'}}>
-                <Navigator />
+                <Navigator screenProps={{a: 'none'}}/>
             </View>
         )
     }
