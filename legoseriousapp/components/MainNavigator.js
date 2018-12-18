@@ -147,14 +147,14 @@ class DrawerContainer extends Component {
         })
         
         const tabs = routes.map( (route, id) => {
-            console.log(`Route: ${route.title} Screen: ${route.screen}`);
+            // console.log(`Route: ${route.title} Screen: ${route.screen}`);
             
-            const navigateToRoute = route.screen && (() => navigation.navigate( route.screen, {test: 'sisukassisu'})) || (() => console.log('No Screen Assigned'));
+            const navigateToRoute = route.screen && (() => { console.log('Navigating');navigation.navigate( route.screen, {test: 'sisukassisu'})}) || (() => console.log('No Screen Assigned'));
             const isHighlighted = (id === this.state.pressedTab);
             const textColor = (isHighlighted) ? '#fff' : '#808080';
             return (
-                <TouchableHighlight key={id} onPressIn={()=>this.isHovering(id)} onPressOut={()=>this.isHovering(-1)} onPress={() => navigateToRoute()} style={{ flex: 0.1, flexDirection: 'column', justifyContent:'center', backgroundColor: 'blue' }} underlayColor={ route.mainColor || '#808080' }>
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingLeft: 10, backgroundColor: 'red' }}>
+            <TouchableHighlight key={id} onPressIn={()=>this.isHovering(id)} onPressOut={()=>this.isHovering(-1)} onPress={() => navigateToRoute()} style={{ flex: 0.15, flexDirection: 'column', justifyContent:'center'/*, backgroundColor: 'blue'*/ }} underlayColor={ route.mainColor || '#808080' }>
+                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingLeft: 10/*, backgroundColor: 'red'*/ }}>
                         {/* Icon / Logo */}
                         <View><Text> O </Text></View>
                         {/* Route Name */}
