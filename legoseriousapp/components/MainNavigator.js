@@ -13,6 +13,17 @@ import {
     createDrawerNavigator
 } from 'react-navigation';
 
+
+// Icons
+import Icon from 'react-native-vector-icons/Octicons';
+const TabIcon = (props={}) => (
+  <Icon
+    name={props.icon || 'person'} 
+    size={30} 
+    color={props.color || '#fff'} 
+  />
+);
+
 // // Screens
 // Introductary slides
 import LoadingScreen from './Screens/LoadingScreen';
@@ -50,7 +61,8 @@ class DrawerContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pressedTab: -1
+            pressedTab: -1,
+            selectedTab: -1
         }
     }
 
@@ -60,6 +72,7 @@ class DrawerContainer extends Component {
 
     render() {
         const { navigation } = this.props;
+
         const menuTabData = [
             { color: "#003DA5", text: "Business",  target: 'Home' },
             { color: "#E93CAC", text: "Slides|Education", target: 'Slides' }, // #ECB3CB
@@ -85,9 +98,10 @@ class DrawerContainer extends Component {
             { 
                 title: 'Profile', 
                 screen: null, 
-                mainColor: null, 
+                mainColor: '#FF8674', 
                 secondaryColor: null,
-                content: []
+                content: [],
+                icon: 'dash'
             },
             // // Paths
             // Core
@@ -96,7 +110,8 @@ class DrawerContainer extends Component {
                 screen: 'Path', 
                 mainColor: '#f9c137', 
                 secondaryColor: '#bf942a',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+                icon: 'database'
             },
             // Personal
             { 
@@ -104,7 +119,8 @@ class DrawerContainer extends Component {
                 screen: 'Path', 
                 mainColor: '#88c9b3', 
                 secondaryColor: '#699a89',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+                icon: 'person'
             },
             // Education
             { 
@@ -112,7 +128,8 @@ class DrawerContainer extends Component {
                 screen: 'Path', 
                 mainColor: '#b06495', 
                 secondaryColor: '#874d72',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+                icon: 'mortar-board'
             },
             // Business
             { 
@@ -120,15 +137,17 @@ class DrawerContainer extends Component {
                 screen: 'Path', 
                 mainColor: '#4f4f94', 
                 secondaryColor: '#3d3d72',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ]
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+                icon: 'briefcase'
             },
             // // Settings
             { 
                 title: 'Settings', 
                 screen: 'Settings', 
-                mainColor: null, 
+                mainColor: '#4c4c4c', 
                 secondaryColor: null,
-                content: []
+                content: [],
+                icon: 'gear'
             }
             // // Sound
 
@@ -137,6 +156,7 @@ class DrawerContainer extends Component {
         // console.log('Props', this.props);
         
 
+        /** @deprecated Not in use anymore */
         const menuTabs = menuTabData.map( (data, id) => {
             // console.log(data.target)
             return (
@@ -145,20 +165,49 @@ class DrawerContainer extends Component {
                 </View>
             )
         })
-        
+
         const tabs = routes.map( (route, id) => {
             // console.log(`Route: ${route.title} Screen: ${route.screen}`);
+            const isSelected    = (id === this.state.selectedTab);
+            const isHighlighted = (id === this.state.pressedTab) || isSelected;
             
-            const navigateToRoute = route.screen && (() => { console.log('Navigating');navigation.navigate( route.screen, {test: 'sisukassisu'})}) || (() => console.log('No Screen Assigned'));
-            const isHighlighted = (id === this.state.pressedTab);
+            const navigateToRoute = route.screen && (() => { 
+                console.log("Routes",route);
+                console.log('Navigating to', route.title);
+                const data = {
+                    title: route.title,
+                    mainColor: route.mainColor,
+                    secondaryColor: route.secondaryColor,
+                    content: route.content
+                }
+                this.setState({ selectedTab: id })
+                navigation.navigate( route.screen, { test: 'TestInject', data: data});
+                navigation.closeDrawer();
+            }) || (() => console.log('No Screen Assigned'));
+            
             const textColor = (isHighlighted) ? '#fff' : '#808080';
             return (
-            <TouchableHighlight key={id} onPressIn={()=>this.isHovering(id)} onPressOut={()=>this.isHovering(-1)} onPress={() => navigateToRoute()} style={{ flex: 0.15, flexDirection: 'column', justifyContent:'center'/*, backgroundColor: 'blue'*/ }} underlayColor={ route.mainColor || '#808080' }>
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingLeft: 10/*, backgroundColor: 'red'*/ }}>
+                <TouchableHighlight key={id} 
+                onPressIn={()=>this.isHovering(id)} 
+                onPressOut={()=>this.isHovering(-1)} 
+                onPress={() => navigateToRoute()} 
+
+                underlayColor={ route.mainColor || '#808080' }
+                style={{ 
+                    flex: 0.15, flexDirection: 'column', justifyContent:'center',
+                    backgroundColor: isSelected && route.mainColor || '#fff'
+                    /*, backgroundColor: 'blue'*/
+                }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', paddingLeft: 10/*, backgroundColor: 'red'*/ }}>
                         {/* Icon / Logo */}
-                        <View><Text> O </Text></View>
+                        <View style={{ marginRight: 10 }}>
+                            <TabIcon color={ textColor || '#4c4c4c'} icon={route.icon}/>
+                        </View>
                         {/* Route Name */}
-                        <Text style={{ fontFamily: 'Ubuntu', fontSize: 18, color: textColor }}>{ route.title }</Text>
+                        <Text style={{ 
+                            fontFamily: 'Ubuntu', fontSize: 18, color: textColor,
+                            textAlignVertical: 'center'
+                        }}>{ route.title }</Text>
                     </View>
                 </TouchableHighlight>
             )

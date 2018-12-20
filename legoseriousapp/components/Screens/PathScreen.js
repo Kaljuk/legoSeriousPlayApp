@@ -47,11 +47,14 @@ export default class PathsScreen extends Component {
 
   render() {
     const { navigation } = this.props;
-    const { content } = [];//this.props.navigation.state.params;
+    const data = navigation.getParam('data', {msg: 'NoData'});
+    const { title, mainColor, secondaryColor, content } = data;//this.props.navigation.state.params;
     console.log('proPPeS', this.props );
     console.log('Params', navigation.getParam('test', 'NO-ID') );
-    
+    console.log('Param Routes', data);
 
+    console.log(`Title: ${title}`);
+    
     const description = 'Pellentesque tempus elit sed ante. Nunc am lectus at egestas laoreet. Sed your purpose, tempus elit sed.';
 
     return (
@@ -64,7 +67,7 @@ export default class PathsScreen extends Component {
 
           { true && 
               // <PathSelection />
-              <PathContentScreen content={ content }/>
+              <PathContentScreen title={title} mainColor={mainColor} secondaryColor={secondaryColor} content={ content }/>
             ||
               <PathChoose description={description} />
           }
