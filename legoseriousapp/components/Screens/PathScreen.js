@@ -12,6 +12,10 @@ import {
 
 } from 'react-native';
 
+// My components
+import PathContentScreen from './SubScreens/PathContentScreen';
+
+
 import Icon from 'react-native-vector-icons/Octicons';
 const MenuIcon = () => (
   <Icon 
@@ -20,6 +24,9 @@ const MenuIcon = () => (
     color='#000' 
   />
 );
+
+
+
 
 
 export default class PathsScreen extends Component {
@@ -39,7 +46,15 @@ export default class PathsScreen extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+    const data = navigation.getParam('data', {msg: 'NoData'});
+    const { title, mainColor, secondaryColor, content } = data;//this.props.navigation.state.params;
+    console.log('proPPeS', this.props );
+    console.log('Params', navigation.getParam('test', 'NO-ID') );
+    console.log('Param Routes', data);
 
+    console.log(`Title: ${title}`);
+    
     const description = 'Pellentesque tempus elit sed ante. Nunc am lectus at egestas laoreet. Sed your purpose, tempus elit sed.';
 
     return (
@@ -50,8 +65,9 @@ export default class PathsScreen extends Component {
           {/* SideMenu button */}
           <SideMenuButton callable={ this.openNavigator } />
 
-          { null && 
-              <PathSelection />
+          { true && 
+              // <PathSelection />
+              <PathContentScreen title={title} mainColor={mainColor} secondaryColor={secondaryColor} content={ content }/>
             ||
               <PathChoose description={description} />
           }
