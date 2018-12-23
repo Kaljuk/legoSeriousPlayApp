@@ -38,6 +38,7 @@ import GuessingGame from './GuessingGame';
 
 // Greeting and Branch Selection Screen
 import PathsScreen from './Screens/PathScreen';
+// Games
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 
 
@@ -65,10 +66,16 @@ class DrawerContainer extends Component {
             pressedTab: -1,
             selectedTab: -1
         }
+
+        this.choosePath = this.choosePath.bind(this);
     }
 
     isHovering(tabId) {
         this.setState({ pressedTab: tabId })
+    }
+
+    choosePath(pathId=-1) {
+        this.setState({ selectedTab: pathId })
     }
 
     render() {
@@ -144,7 +151,7 @@ class DrawerContainer extends Component {
             // // Settings
             { 
                 title: 'Settings', 
-                screen: 'Settings', 
+                screen: 'Game',//'Settings', 
                 mainColor: '#4c4c4c', 
                 secondaryColor: null,
                 content: [],
@@ -154,18 +161,7 @@ class DrawerContainer extends Component {
 
             // // About
         ]
-        // console.log('Props', this.props);
         
-
-        /** @deprecated Not in use anymore */
-        const menuTabs = menuTabData.map( (data, id) => {
-            // console.log(data.target)
-            return (
-                <View key={id} style={{paddingTop: 10}}>
-                    <TargetRect color={ data.color } text={ data.text } onPress={() => navigation.navigate(data.target)}/>
-                </View>
-            )
-        })
 
         const tabs = routes.map( (route, id) => {
             // console.log(`Route: ${route.title} Screen: ${route.screen}`);
@@ -182,11 +178,12 @@ class DrawerContainer extends Component {
                     content: route.content
                 }
                 this.setState({ selectedTab: id })
-                navigation.navigate( route.screen, { test: 'TestInject', data: data});
+                navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
                 navigation.closeDrawer();
             }) || (() => console.log('No Screen Assigned'));
             
             const textColor = (isHighlighted) ? '#fff' : '#808080';
+
             return (
                 <TouchableHighlight key={id} 
                 onPressIn={()=>this.isHovering(id)} 
@@ -301,6 +298,10 @@ const Navigator = createDrawerNavigator({
     LoadingScreen: {
         screen: LoadingScreen
     },
+    // TEMP START
+    Home: {
+        screen: LoadingScreen // ProfileScreen
+    },// TEMP END
     Profile: {
         screen: LoadingScreen // ProfileScreen
     },
@@ -318,7 +319,7 @@ const Navigator = createDrawerNavigator({
         screen: QuestionScreen
     },
     Game: {
-        screen: GuessingGame // Game Screen
+        screen: QuestionScreen //GuessingGame // Game Screen
     }
 }, {
     initialRouteName: 'Path',

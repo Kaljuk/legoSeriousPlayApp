@@ -1,19 +1,17 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
     View,
+    TouchableOpacity,
 
-    Image, ImageBackground, 
-    Text,
-    TouchableHighlight, TouchableOpacity
-
+    Text
 } from 'react-native';
 
 // LazyLogging
 const log = console.log;
 
 
-export default class PathContentScreen extends React.Component {
+export default class PathContentSelectionScreen extends React.Component {
     constructor(props) {
         super(props)
     }
