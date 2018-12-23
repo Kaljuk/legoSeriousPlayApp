@@ -37,12 +37,8 @@ import FeedScreen from './Screens/FeedScreen';
 import GuessingGame from './GuessingGame';
 
 // Greeting and Branch Selection Screen
-<<<<<<< HEAD
 import PathsScreen from './Screens/PathScreen';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
-=======
-import PathScreen from './Screens/PathScreen';
->>>>>>> 9e110bb05504639fa030eeb55b4356c80cdd157b
 
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -308,32 +304,24 @@ const Navigator = createDrawerNavigator({
     Profile: {
         screen: LoadingScreen // ProfileScreen
     },
+    /** Greeting and Branch Selection Screen */
     Path: {
-        screen: PathScreen
+        screen: PathsScreen
     },
     Settings: {
         screen: SlideScreen // SettingsScreen
     },
     About: {
-        screen: PathScreen // AboutScreen
+        screen: PathsScreen // AboutScreen
     },
-<<<<<<< HEAD
     Branches: {
         screen: QuestionScreen
     },
-    /** Greeting and Branch Selection Screen */
-    Paths: {
-        screen: PathsScreen
-    }
-}, {
-    initialRouteName: 'Branches',
-=======
     Game: {
         screen: GuessingGame // Game Screen
     }
 }, {
     initialRouteName: 'Path',
->>>>>>> 9e110bb05504639fa030eeb55b4356c80cdd157b
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.70
 })

@@ -32,7 +32,9 @@ const MenuIcon = () => (
 export default class PathsScreen extends Component {
   constructor(props) {
       super(props);
-
+      this.state = {
+        showContent: false
+      }
       this.openNavigator = this.openNavigator.bind(this);
   }
 
