@@ -6,7 +6,7 @@ class QuestionButtons extends Component {
     constructor(props){
         super(props);
         this.state={
-            forward: !(props.answers.length > 1)
+            forward: !(props.answers.length > 1) //false
         }
     }
     forward(){
@@ -17,7 +17,7 @@ class QuestionButtons extends Component {
             const button = (
                 <QuestionButton key= {id} 
                 onPress={this.props.onPress} 
-                answers={answer} 
+                answers={answer.text} 
                 forwardState = {this.forward}
                 />
             )
