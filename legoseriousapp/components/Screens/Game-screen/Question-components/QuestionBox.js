@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
     View, 
     Text,
 } from 'react-native';
 
 const QuestionBox = (props) => {
     return (
-        <View stlye={{
-            marginTop: 120,
-            backgroundColor: 'red',
-        }}>
+        <View>
             <Text style=
             {{
                 marginTop: 30,

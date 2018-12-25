@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-    TouchableHighlight,
-    View,
-    Text
-} from 'react-native';
+import { View } from 'react-native';
 import QuestionButton from './QuestionButton';
 
 class QuestionButtons extends Component {
@@ -17,10 +13,13 @@ class QuestionButtons extends Component {
         this.setState({'forward': true})
     }
     render(){
-        console.log('vastusedAAA',this.props.answers);
         const buttons = this.props.answers.map((answer, id)=>{
             const button = (
-                <QuestionButton key= {id} onPress={this.props.onPress} answers={answer} forwardState = {this.forward}/>
+                <QuestionButton key= {id} 
+                onPress={this.props.onPress} 
+                answers={answer} 
+                forwardState = {this.forward}
+                />
             )
             return button;
         })
@@ -29,7 +28,7 @@ class QuestionButtons extends Component {
             {buttons}
         </View>
     );
-}
+    } 
 }
 export default QuestionButtons;
 
