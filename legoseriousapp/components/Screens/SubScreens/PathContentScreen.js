@@ -5,6 +5,12 @@ import {
     View
 } from 'react-native';
 
+// // // Content Elements
+
+// // Games
+// QuestionScreen
+import QuestionScreen from './../Game-screen/QuestionScreen';
+
 
 export default class PathContentScreen extends Component {
   constructor(props) {
@@ -15,8 +21,23 @@ export default class PathContentScreen extends Component {
       }
   }
 
+  contentElement(contentType=null) {
+    if (!contentType) return null;
+    switch(contentType) {
+      case 'questionGame':
+        return QuestionScreen;
+      break;
+      default: 
+        return null;
+    }
+
+  }
+
   render() {
-    const contentElement = this.props.contentElement;
+    const contentType = this.props.contentType || 'questionGame';
+
+    
+
     return (
       <View>
         
