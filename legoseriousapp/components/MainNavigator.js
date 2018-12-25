@@ -41,6 +41,8 @@ import PathsScreen from './Screens/PathScreen';
 // Games
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 
+// // Data
+import contents from './Contents';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
@@ -118,7 +120,7 @@ class DrawerContainer extends Component {
                 screen: 'Path', 
                 mainColor: '#f9c137', 
                 secondaryColor: '#bf942a',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game', questions: contents.core.collabGame.questions },{ title: 'Practical Game' }] ],
                 icon: 'database'
             },
             // Personal
