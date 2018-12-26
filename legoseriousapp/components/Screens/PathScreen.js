@@ -15,7 +15,7 @@ import PathSelectionScreen from './SubScreens/PathSelectionScreen';
 // Screen to select path content
 import PathContentSelectionScreen from './SubScreens/PathContentSelectionScreen';
 // Path Content Screen
-
+import PathContentScreen from './SubScreens/PathContentScreen';
 
 import Icon from 'react-native-vector-icons/Octicons';
 const MenuIcon = () => (
@@ -26,15 +26,11 @@ const MenuIcon = () => (
   />
 );
 
-
-
-
-
 export default class PathsScreen extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        pathChosen: false,
+        pathChosen: true,
         showContent: false
       }
       this.openNavigator = this.openNavigator.bind(this);
@@ -47,6 +43,10 @@ export default class PathsScreen extends Component {
     }  
     
     // this.props.navigator.navigate('DrawerOpen')
+  }
+
+  showContent() {
+    this.setState({ showContent: true });
   }
 
   render() {
@@ -65,15 +65,17 @@ export default class PathsScreen extends Component {
           {/* SideMenu button */}
           <SideMenuButton callable={ this.openNavigator } />
 
-          { false && 
+          { !this.state.pathChosen && 
               // Path Selection
               <PathSelectionScreen choosePath={choosePath} description={description} />
             ||
-              // Path Content Selection
+              (// Path Content Selection
+              !this.state.showContent &&
               <PathContentSelectionScreen title={title} mainColor={mainColor} secondaryColor={secondaryColor} content={ content }/>
-            // || 
+              )
+            || 
               // Path Content
-              // <>
+              <PathContentScreen />
           }
         </View>
     )

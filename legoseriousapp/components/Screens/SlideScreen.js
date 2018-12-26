@@ -17,7 +17,8 @@ import {
 
 // My Modules
 import Slide from '../Slide';
-
+// VideoSlide
+import VideoSlide from './Slides/VideoSlide';
 
 class SlideNav extends Component {
     constructor(props) {
@@ -143,6 +144,7 @@ export default class SlideScreen extends Component {
 
         return (
             <View style={{ backgroundColor: 'red', flex: 1 }}>
+                {/* <VideoSlide /> */}
                 <SlideNavigation screenProps={{ data }}></SlideNavigation>
             </View>
         )
