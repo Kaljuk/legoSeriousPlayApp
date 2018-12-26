@@ -16,6 +16,11 @@ export default class PathContentSelectionScreen extends React.Component {
         super(props)
     }
 
+    selectContent(contentType, content) {
+        console.log("Selected data", contentType, content)
+        this.props.selectContent(contentType, content);
+    }
+
     render() {
         // Title of the current path
         const title = this.props.title || 'NoTitle';
@@ -27,7 +32,7 @@ export default class PathContentSelectionScreen extends React.Component {
         const rowOne = [{ title: 'Tutorial', icon: null, isNew: false }]
         const rowTwo = [{ title: 'Video', icon: null, isNew: false }]        
         const rowThree = [{ title: 'Infographic', icon: null, isNew: true }, { title: 'Infographic', icon: null, isNew: true }]
-        const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true }]
+        const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true, contentType: 'questionGame' }]
         
         const fillerContent = [rowOne, rowTwo, rowThree, rowFour];
 
@@ -44,7 +49,7 @@ export default class PathContentSelectionScreen extends React.Component {
                         marginHorizontal: 5,
                         flexDirection: 'column',
                         alignItems: 'center'
-                    }}>
+                    }} onPress={ () => this.selectContent(element.contentType, element.content)}>
                         <View style={{
                             height: 80,
                             width : 80,

@@ -324,7 +324,7 @@ const Navigator = createDrawerNavigator({
         screen: QuestionScreen //GuessingGame // Game Screen
     }
 }, {
-    initialRouteName: 'Branches',
+    initialRouteName: 'Path',
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.70
 })

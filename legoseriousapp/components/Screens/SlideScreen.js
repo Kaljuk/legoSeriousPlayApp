@@ -3,9 +3,7 @@ import {
     View, 
     StyleSheet,
 
-    Text,
-
-    Animated
+    Text
 } from 'react-native';
 
 import {
@@ -17,6 +15,8 @@ import {
 
 // My Modules
 import Slide from '../Slide';
+// ContentSlide
+import ContentSlide from './Slides/ContentSlide';
 // VideoSlide
 import VideoSlide from './Slides/VideoSlide';
 
@@ -24,12 +24,7 @@ class SlideNav extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.state.bw = new Animated.Value(0);
-
-        
-    }
-
-    
+    }    
 
     render() {
         
@@ -51,23 +46,6 @@ class SlideNav extends Component {
                 )
             })
 
-        // const {
-        //     navigation,
-        //     renderIcon,
-        //     activeTintColor,
-        //     inactiveTintColor,
-        //     jumpToIndex
-        // } = this.props;
-        // const { routes } = (navigation || {}).state || {};
-        // Animated.timing(this.state.bw, { 
-        //     toValue: 2,
-        //     duration: 1500,
-        //     delay: 1000
-        // }).start();
-
-        // console.log("Routes:", routes, navigation.state.index)
-        // console.log("Nav:", navigation)
-        
         return (
             <View style={ styles.navContainer }>
                 <Text style={{ 
@@ -76,10 +54,6 @@ class SlideNav extends Component {
                     textAlignVertical: 'center',
                     fontFamily: 'Ubuntu'
                 }}> {dots} </Text>
-                {/* <Animated.View style={[styles.navOuterCircle, { borderWidth: this.state.bw } ]}>
-                    <View style={ styles.navInnerCircle }></View>    
-                { (routes || []).map((route, id) => <Text style={{ backgroundColor: ((navigation.state.index === id) ? 'blue' : 'green'), textAlign: 'center' }} key={id}>Sisukas {route.routeName} {navigation.state.index}</Text>)}
-                </Animated.View> */}
             </View>
         )
     }
@@ -144,8 +118,10 @@ export default class SlideScreen extends Component {
 
         return (
             <View style={{ backgroundColor: 'red', flex: 1 }}>
+                {/** @todo: Make this work */}
                 {/* <VideoSlide /> */}
-                <SlideNavigation screenProps={{ data }}></SlideNavigation>
+                {/* <SlideNavigation screenProps={{ data }}></SlideNavigation> */}
+                <ContentSlide />
             </View>
         )
     }

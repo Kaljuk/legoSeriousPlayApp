@@ -30,7 +30,7 @@ export default class VideoSlide extends React.Component {
         
         backgroundColor: 'red' 
       }}>
-
+        
       </View>
       
     )

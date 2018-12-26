@@ -21,12 +21,14 @@ export default class QuestionScreen extends Component {
             this.setState({index:0})
         }else if(index == 2){
             const callabale = this.props.quit || (()=>console.log('quit missing'))
+            callabale();
         }else{
             this.setState({'index': this.state.index + 1})
         }
         
     }   
     render() {
+        console.log('do we have quit?', (this.props.quit))
         const questions = this.props.questions || contents.core.collabGame.questions;
         const lastQuestion = ((questions.length - 1) > this.state.index)? false: true;
         const currentQuestion = questions[this.state.index]

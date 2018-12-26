@@ -31,9 +31,18 @@ export default class PathsScreen extends Component {
       super(props);
       this.state = {
         pathChosen: true,
-        showContent: false
+        showContent: false,
+
+        contentType: null,
+        contentData: null
       }
       this.openNavigator = this.openNavigator.bind(this);
+      this.selectContent = this.selectContent.bind(this);
+      this.hideContent   = this.hideContent.bind(this);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ showContent: false })
   }
 
   openNavigator() {
@@ -45,9 +54,16 @@ export default class PathsScreen extends Component {
     // this.props.navigator.navigate('DrawerOpen')
   }
 
+  selectContent(contentType=null) {
+    this.setState({ contentType: contentType, showContent: true });
+  }
+
   showContent() {
     this.setState({ showContent: true });
   }
+  hideContent() {
+    this.setState({ showContent: false });
+  }  
 
   render() {
     const { navigation } = this.props;
@@ -71,11 +87,11 @@ export default class PathsScreen extends Component {
             ||
               (// Path Content Selection
               !this.state.showContent &&
-              <PathContentSelectionScreen title={title} mainColor={mainColor} secondaryColor={secondaryColor} content={ content }/>
+              <PathContentSelectionScreen title={title} mainColor={mainColor} secondaryColor={secondaryColor} content={ content } selectContent={ this.selectContent }/>
               )
             || 
               // Path Content
-              <PathContentScreen />
+              <PathContentScreen contentType={ this.state.contentType } contentData={ this.state.contentData } quit={ this.hideContent } />
           }
         </View>
     )

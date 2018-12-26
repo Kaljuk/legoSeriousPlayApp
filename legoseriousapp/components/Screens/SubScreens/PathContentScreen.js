@@ -22,6 +22,8 @@ export default class PathContentScreen extends Component {
         // Content done, return back to pathScreen?
         contentDone: false
       }
+
+      this.contentFinished = this.contentFinished.bind(this);
   }
 
   contentElement(contentType=null, data={}) {
@@ -30,22 +32,25 @@ export default class PathContentScreen extends Component {
       // // Games
       case 'questionGame':
         const questions = data.questions;
-        return (<QuestionScreen questions={questions} />);
+        return (<QuestionScreen questions={questions} quit={ this.contentFinished } />);
       // // Slides
       case 'slides':
         const slides = data.slides;
-        return (<SlideScreen />)
+        return (<SlideScreen quit={ this.contentFinished } />)
       break;
       default: 
         return null;
     }
+  }
 
+  contentFinished() {
+    this.props.quit();
   }
 
   render() {
 
     const contentType = this.props.contentType || 'slides'; //'questionGame';
-    const contentData = this.props.content || {};
+    const contentData = this.props.contentData || {};
     const ContentElement = this.contentElement(contentType, contentData)
     console.log('Showing content')
     return (

@@ -64,17 +64,9 @@ class SlideText extends Component {
 export default class Slide extends Component {
     constructor(props) {
         super(props);
-        // console.log('Show slide: ', props)
-        // console.log("hihi:", props);
-        
     }
 
     render() {
-        const data = [
-            {title: "LEGO® Serious Play®", text: 'Use LEGO Bricks to Make Sense of Yourself and Communicate Better with Others'}, 
-            {title: "practical game"},
-            {title: "Some other content"}
-        ];
         const themeColor = this.props.color || "#7AC133";
         const circleColor= this.props.darkColor || "#5d9427";
         const pictureUrl = this.props.picture || 'https://www.lego.com/r/www/r/seriousplay/-/media/serious%20play/shared/idea-0534.png?l.r2=35248712';
