@@ -13,23 +13,30 @@ export default class QuestionScreen extends Component {
     constructor(props) {
         super(props);
         this.state={
-            item: 0
+            index: 0
         }
     }
-    answerQuestion = () => {
-        this.setState({'item': this.state.item + 1})
+    answerQuestion = (index = 0) => {
+        if(index == 1){
+            this.setState({index:0})
+        }else if(index == 2){
+            
+        }else{
+            this.setState({'index': this.state.index + 1})
+        }
+        
     }   
     render() {
-        
         const questions = this.props.questions || contents.core.collabGame.questions;
-        const currentQuestion = questions[this.state.item]
+        const lastQuestion = ((questions.length - 1) > this.state.index)? false: true;
+        const currentQuestion = questions[this.state.index]
         const question = currentQuestion.question;
         const answers = currentQuestion.answers;
         console.log("vastused",answers);
         return (
             <View style={styles.container}>
                 <QuestionBox question={question} />
-                <QuestionButtons answers={answers} onPress={this.answerQuestion}/>
+                <QuestionButtons isLastQuestion = {lastQuestion} answers={answers} onPress={this.answerQuestion}/>
             </View>
         )
     }

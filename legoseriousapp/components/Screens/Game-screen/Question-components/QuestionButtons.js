@@ -7,7 +7,6 @@ class QuestionButtons extends Component {
         super(props);
         this.state={
             firstAnswered: !(props.answers.length > 1) //true
-            // nextQuestion: !(props.answers.length > 1) //false
         }
         console.log('refresh');
     }
@@ -16,43 +15,38 @@ class QuestionButtons extends Component {
             'firstAnswered': !(props.answers.length > 1) //true
         })
     }
-    answerQuestion(){
+    answerQuestion(isLast=false, index){
         console.log('answered',this.state.firstAnswered)
-        if(this.state.firstAnswered){
-            this.props.onPress()
+        if(!isLast){
+            if(this.state.firstAnswered){
+                this.props.onPress()
+            }else{
+                this.setState({'firstAnswered': true})
+            }
         }else{
-            this.setState({'firstAnswered': true})
+            this.props.onPress(index)
         }
     }
     render(){
         const answers = this.props.answers || [];
-        const buttons = answers.map((answer, id)=>{
-            const button = (
-                <QuestionButton key= {id} 
-                enabled={false}
-                answers={answer.text}
-                callable={()=>console.log('nupu vajutus')}
-                />
-            )
-            return button;
-
-        })
         const pressFirstButton = !(this.state.firstAnswered);
-        const onlyOneAnswer = !(this.props.answers.length>1);
+        const onlyOneAnswer = !(answers.length>1);
         const moreThanOneButton = (answers.length > 1);
-        const firstButtonPressed= (this.state.firstAnswered);
-
+        const firstButtonPressed= !pressFirstButton;
+ 
         const firstText = (answers.length > 0)?answers[0].text:'teks puudub';
         const secondText = (answers.length > 1)?answers[1].text:'teks puudub';
+
+        const isLastQuestion = this.props.isLastQuestion || false; 
+        // const lastQuestion = (isLastQuestion)? 
         const buttonss = (
             <View>
-                <QuestionButton enabled={pressFirstButton || onlyOneAnswer} callable={()=>this.answerQuestion()} text={firstText} />  
-                {moreThanOneButton && <QuestionButton enabled={firstButtonPressed} callable={()=>this.answerQuestion()} text={secondText}/>}
+                <QuestionButton enabled={pressFirstButton || onlyOneAnswer} callable={()=>this.answerQuestion(isLastQuestion, 1)} text={firstText} />  
+                {moreThanOneButton && <QuestionButton enabled={firstButtonPressed || isLastQuestion} callable={()=>this.answerQuestion(isLastQuestion, 2)} text={secondText}/>}
             </View>
-        )
-        
-        
-        console.log('fa',this.state.firstAnswered)
+        )        
+        //logs
+
     return (
         <View>
             { buttonss }
