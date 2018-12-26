@@ -20,7 +20,7 @@ export default class QuestionScreen extends Component {
         if(index == 1){
             this.setState({index:0})
         }else if(index == 2){
-            
+            const callabale = this.props.quit || (()=>console.log('quit missing'))
         }else{
             this.setState({'index': this.state.index + 1})
         }
