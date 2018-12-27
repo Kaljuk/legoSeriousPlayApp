@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    View,
+    View, ScrollView,
     TouchableOpacity,
 
     Text
@@ -9,6 +9,7 @@ import {
 
 // LazyLogging
 const log = console.log;
+
 
 
 export default class PathContentSelectionScreen extends React.Component {
@@ -29,12 +30,13 @@ export default class PathContentSelectionScreen extends React.Component {
         const secondaryColor = this.props.secondaryColor || '#3d3d72';
         
         // Icon = picture on the content button, isNew: has the user clicked on it before?
-        const rowOne = [{ title: 'Tutorial', icon: null, isNew: false }]
-        const rowTwo = [{ title: 'Video', icon: null, isNew: false }]        
+        const rowOne = [{ title: 'Tut', icon: null, isNew: false }]
+        const rowTwo = [{ title: 'Vid', icon: null, isNew: false }]        
         const rowThree = [{ title: 'Infographic', icon: null, isNew: true }, { title: 'Infographic', icon: null, isNew: true }]
         const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true, contentType: 'questionGame' }]
+
         
-        const fillerContent = [rowOne, rowTwo, rowThree, rowFour];
+        const fillerContent = [rowOne, rowTwo, rowThree, rowFour, rowFour, rowFour];
 
         const content = this.props.content || fillerContent;
         // console.log('Content', content);
@@ -42,6 +44,7 @@ export default class PathContentSelectionScreen extends React.Component {
         const pathElements = content.map( (elementRow=[], elementRowId) => {
             
             const elements = elementRow.map( (element={}, elementId) => {
+                const contentTitle = (element.contentData && '*' || '')+element.title || 'Tiitel';
                 return (
                     <TouchableOpacity  key={ elementId } style={{ 
                         height: 100,
@@ -57,7 +60,7 @@ export default class PathContentSelectionScreen extends React.Component {
                             backgroundColor: secondaryColor
                         }}></View>
                         <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 4 }}>
-                            <Text style={{ fontFamily: 'Ubuntu', fontSize: 14, color: 'white' }} numberOfLines={1}> { element.title || 'Tiitel'} </Text>
+                            <Text style={{ fontFamily: 'Ubuntu', fontSize: 14, color: 'white' }} numberOfLines={1}> { contentTitle } </Text>
                         </View>
                     </TouchableOpacity>
                 )
@@ -75,18 +78,30 @@ export default class PathContentSelectionScreen extends React.Component {
         })
         
         return (
-            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: mainColor }}>
-                {/* Header with nav button */}
-                <View style={{ 
-                    flex: 0.18, flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', 
-                    paddingBottom: 10
-                }}>
-                    <Text style={{ fontFamily: 'Ubuntu', fontSize: 24, fontWeight: 'bold', color: 'white' }}> { (title || 'Core').toUpperCase() } </Text>
-                </View>
-                {/* Contents Container */}
-                <View style={{ flex: 0.8 }}>
-                    { pathElements }
-                </View>
+            <View style={{ 
+                flex: 1, 
+                flexDirection: 'column',
+                backgroundColor: mainColor 
+            }}>
+                <ScrollView>
+                    {/* Header with nav button */}
+                    <View style={{ 
+                        flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', 
+                        paddingTop: 40,
+                        paddingBottom: 20
+                        // ,backgroundColor: 'red'
+                    }}>
+                        <Text style={{ fontFamily: 'Ubuntu', fontSize: 24, fontWeight: 'bold', color: 'white' }}> { (title || 'Core').toUpperCase() } </Text>
+                    </View>
+                    {/* Contents Container */}
+                    <View style={{ 
+                        //flex: 0.8 
+                        paddingTop: 30,
+                        paddingBottom: 50
+                    }}>
+                        { pathElements }
+                    </View>
+                </ScrollView>
             </View>
         )
     }
