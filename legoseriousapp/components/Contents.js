@@ -35,7 +35,7 @@ export default contents = {
           {
           question: 'Instruction recieved: \n\n1. Build a tower with 10 bricks \n2. Tell a story about the building \n3. Change the building so that is taller \n4. Do 3 changes on the building \n5. Explain when blindfolded'
           ,
-          answers: [{text:'Quit'}, {text: 'Play again!'}]
+          answers: [{text: 'Play again!'}, {text:'Quit'}]
           }
       ]
     }
@@ -51,3 +51,101 @@ export default contents = {
   }
 }
 
+// // // Contents of given routes
+const coreContent = [
+  // // First row - Tutorial
+  [{ title: 'Tutorial' }], 
+  [{ title: 'Video' }], 
+  // // Third row - Slides
+  [
+    { 
+      title: 'Infograpic' 
+    },
+    { 
+      title: 'Infographic' 
+    }
+  ], 
+  // // Fourth row - Games
+  [
+    { 
+      title: 'Mind Game' 
+    },
+    { 
+      title: 'Collab Game', 
+
+      contentType: 'questionGame',
+      contentData: {
+        questions: contents.core.collabGame.questions,
+        share: {
+          contentType: '',//'link',
+          contentUrl: "http://seriousplaypro.com/",//"https://facebook.com",
+          contentDescription: 'Facebook sharing is easy!'
+        }
+      }
+    },{ 
+      title: 'Practical Game'  
+    }
+  ]
+]
+
+// // // Main Routes 
+export const mainRoutes = [
+  // // Profile
+  { 
+      title: 'Profile', 
+      screen: null, 
+      mainColor: '#FF8674', 
+      secondaryColor: null,
+      content: [],
+      icon: 'dash'
+  },
+  // // Paths
+  // Core
+  { 
+      title: 'Core', 
+      screen: 'Path', 
+      mainColor: '#f9c137', 
+      secondaryColor: '#bf942a',
+      content: coreContent,
+      icon: 'database'
+  },
+  // Personal
+  { 
+      title: 'Personal', 
+      screen: 'Path', 
+      mainColor: '#88c9b3', 
+      secondaryColor: '#699a89',
+      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+      icon: 'person'
+  },
+  // Education
+  { 
+      title: 'Education', 
+      screen: 'Path', 
+      mainColor: '#b06495', 
+      secondaryColor: '#874d72',
+      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+      icon: 'mortar-board'
+  },
+  // Business
+  { 
+      title: 'Business', 
+      screen: 'Path', 
+      mainColor: '#4f4f94', 
+      secondaryColor: '#3d3d72',
+      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+      icon: 'briefcase'
+  },
+  // // Settings
+  { 
+      title: 'Settings', 
+      screen: 'Game',//'Settings', 
+      mainColor: '#4c4c4c', 
+      secondaryColor: null,
+      content: [],
+      icon: 'gear'
+  }
+  // // Sound
+
+  // // About
+]
