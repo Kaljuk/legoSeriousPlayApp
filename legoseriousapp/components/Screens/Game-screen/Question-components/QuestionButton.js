@@ -15,9 +15,11 @@ class QuestionButton extends Component {
         const color = (enabled == false)? 'gray': '#00BFFF'; //ternary operator
         const text = (this.props.text)? this.props.text: 'vastus puudub';
         return (
-            <View style={{ backgroundColor: color, width: 170, height: 70, marginTop: 30, justifyContent: 'center'}} >
+            <View>
                 <TouchableOpacity onPress={() => callable()}>
-                    <Text style={{color:'white', fontSize: 20, fontFamily: 'Ubuntu', textAlign: 'center'}}>{text}</Text>
+                <View style={{ backgroundColor: color, width: 170, height: 70, marginTop: 30, justifyContent: 'center'}} >
+                        <Text style={{color:'white', fontSize: 20, fontFamily: 'Ubuntu', textAlign: 'center'}}>{text}</Text>
+                </View>
                 </TouchableOpacity>
             </View>
         );
