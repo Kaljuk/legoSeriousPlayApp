@@ -32,7 +32,8 @@ export default class PathContentScreen extends Component {
       // // Games
       case 'questionGame':
         const questions = data.questions;
-        return (<QuestionScreen questions={questions} quit={ this.contentFinished } />);
+        const share = data.share || null;
+        return (<QuestionScreen questions={questions} quit={ this.contentFinished } share={share} />);
       // // Slides
       case 'slides':
         const slides = data.slides;
