@@ -9,6 +9,13 @@ import contents from '../../Contents';
 import QuestionBox from './Question-components/QuestionBox';
 import QuestionButtons from './Question-components/QuestionButtons'
 
+// For sharing results / score on facebook
+import {
+    ShareDialog
+} from 'react-native-fbsdk'
+
+
+
 export default class QuestionScreen extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +34,16 @@ export default class QuestionScreen extends Component {
         }
         
     }   
+
+    shareResults(results) {
+        /** @todo: Create sharing function */
+        // ShareDialog.canShow({
+        //     contentType: 'link',
+        //     contentUrl: 'http://seriousplaypro.com/',
+        //     contentDescription: ''
+        // })
+    }
+
     render() {
         console.log('do we have quit?', (this.props.quit))
         const questions = this.props.questions || contents.core.collabGame.questions;
