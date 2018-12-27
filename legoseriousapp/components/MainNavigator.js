@@ -42,7 +42,7 @@ import PathsScreen from './Screens/PathScreen';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 
 // // Data
-import contents from './Contents';
+import { mainRoutes } from './Contents';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
@@ -103,66 +103,7 @@ class DrawerContainer extends Component {
          * 
          * About     -> AboutScreen
         */
-        const routes = [
-            // // Profile
-            { 
-                title: 'Profile', 
-                screen: null, 
-                mainColor: '#FF8674', 
-                secondaryColor: null,
-                content: [],
-                icon: 'dash'
-            },
-            // // Paths
-            // Core
-            { 
-                title: 'Core', 
-                screen: 'Path', 
-                mainColor: '#f9c137', 
-                secondaryColor: '#bf942a',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game', questions: contents.core.collabGame.questions },{ title: 'Practical Game' }] ],
-                icon: 'database'
-            },
-            // Personal
-            { 
-                title: 'Personal', 
-                screen: 'Path', 
-                mainColor: '#88c9b3', 
-                secondaryColor: '#699a89',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
-                icon: 'person'
-            },
-            // Education
-            { 
-                title: 'Education', 
-                screen: 'Path', 
-                mainColor: '#b06495', 
-                secondaryColor: '#874d72',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
-                icon: 'mortar-board'
-            },
-            // Business
-            { 
-                title: 'Business', 
-                screen: 'Path', 
-                mainColor: '#4f4f94', 
-                secondaryColor: '#3d3d72',
-                content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
-                icon: 'briefcase'
-            },
-            // // Settings
-            { 
-                title: 'Settings', 
-                screen: 'Game',//'Settings', 
-                mainColor: '#4c4c4c', 
-                secondaryColor: null,
-                content: [],
-                icon: 'gear'
-            }
-            // // Sound
-
-            // // About
-        ]
+        const routes = mainRoutes;
         
 
         const tabs = routes.map( (route, id) => {
