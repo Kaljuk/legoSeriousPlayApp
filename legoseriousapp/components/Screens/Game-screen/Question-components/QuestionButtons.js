@@ -8,7 +8,8 @@ class QuestionButtons extends Component {
         this.state={
             firstAnswered: !(props.answers.length > 1) //true
         }
-        console.log('refresh');
+        
+        this.answerQuestion = this.answerQuestion.bind(this);
     }
     componentWillReceiveProps(props){
         this.setState({
@@ -17,13 +18,13 @@ class QuestionButtons extends Component {
     }
     answerQuestion(isLast=false, index){
         console.log('answered',this.state.firstAnswered)
-        if(!isLast){
+        if(!isLast) {
             if(this.state.firstAnswered){
                 this.props.onPress()
             }else{
                 this.setState({'firstAnswered': true})
             }
-        }else{
+        } else {
             this.props.onPress(index)
         }
     }
@@ -41,7 +42,11 @@ class QuestionButtons extends Component {
         // const lastQuestion = (isLastQuestion)? 
         const buttonss = (
             <View>
+                {/* Share button - when can share & is last question */}
+                { isLastQuestion && <QuestionButton enabled={true} callable={()=>this.answerQuestion(isLastQuestion, 3)} text={"Share results?"}/>}
+                {/* First Button */}
                 <QuestionButton enabled={pressFirstButton || onlyOneAnswer} callable={()=>this.answerQuestion(isLastQuestion, 1)} text={firstText} />  
+                {/* Second Button */}
                 {moreThanOneButton && <QuestionButton enabled={firstButtonPressed || isLastQuestion} callable={()=>this.answerQuestion(isLastQuestion, 2)} text={secondText}/>}
             </View>
         )        
