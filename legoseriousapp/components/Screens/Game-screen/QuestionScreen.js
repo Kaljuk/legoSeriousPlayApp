@@ -70,7 +70,7 @@ export default class QuestionScreen extends Component {
         const currentQuestion = questions[this.state.index]
         const question = currentQuestion.question;
         const answers = currentQuestion.answers;
-        console.log("vastused",answers);
+        console.log("vastuused",answers);
         return (
             <View style={styles.container}>
                 <QuestionBox question={question} />
