@@ -41,6 +41,8 @@ import PathsScreen from './Screens/PathScreen';
 // Games
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 
+import IntroScreen from './Screens/IntroScreen';
+
 // // Data
 import { mainRoutes } from './Contents';
 
@@ -263,9 +265,12 @@ const Navigator = createDrawerNavigator({
     },
     Game: {
         screen: QuestionScreen //GuessingGame // Game Screen
+    },
+    Intro: {
+        screen: IntroScreen,
     }
 }, {
-    initialRouteName: 'Path',
+    initialRouteName: 'Intro',
     contentComponent: DrawerContainer,
     drawerWidth: DEVICE_WIDTH * 0.70
 })
