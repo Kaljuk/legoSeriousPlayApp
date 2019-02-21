@@ -26,8 +26,6 @@ export default class VideoSlide extends React.Component {
 
     return (
       <View style={{ 
-        flex: 1, flexDirection: 'column', 
-        
         backgroundColor: 'red' 
       }}>
         
