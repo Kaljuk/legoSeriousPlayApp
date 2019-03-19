@@ -58,7 +58,8 @@ export default class IntroScreen extends Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Lego Serious Play</Text>
+          <VideoSlide />
+          {/* <Text style={styles.text}>Lego Serious Play</Text> */}
         </View>
         <View style={styles.slide2}>
           <Text style={styles.text}>Guided Videos</Text>
