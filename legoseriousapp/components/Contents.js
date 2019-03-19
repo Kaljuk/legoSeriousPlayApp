@@ -118,25 +118,7 @@ export const mainRoutes = [
       content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
       icon: 'person'
   },
-  // Education
-  { 
-      title: 'Education', 
-      screen: 'Path', 
-      mainColor: '#b06495', 
-      secondaryColor: '#874d72',
-      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
-      icon: 'mortar-board'
-  },
-  // Business
-  { 
-      title: 'Business', 
-      screen: 'Path', 
-      mainColor: '#4f4f94', 
-      secondaryColor: '#3d3d72',
-      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
-      icon: 'briefcase'
-  },
-  // // Settings
+  // Settings
   { 
       title: 'Settings', 
       screen: 'Game',//'Settings', 

@@ -3,9 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-
     TouchableHighlight, 
-
     Dimensions
 } from 'react-native';
 
@@ -43,11 +41,11 @@ import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 
 import IntroScreen from './Screens/IntroScreen';
 
+import OptionScreen from './Screens/OptionScreen';
 // // Data
 import { mainRoutes } from './Contents';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
-
 
 function TargetRect(props) {
     // console.log(props)
@@ -86,28 +84,16 @@ class DrawerContainer extends Component {
         const { navigation } = this.props;
 
         const menuTabData = [
-            { color: "#003DA5", text: "Business",  target: 'Home' },
-            { color: "#E93CAC", text: "Slides|Education", target: 'Slides' }, // #ECB3CB
+            // { color: "#003DA5", text: "Business",  target: 'Home' },
+            // { color: "#E93CAC", text: "Slides|Education", target: 'Slides' }, // #ECB3CB
             { color: "#A2E4B8", text: "Branches",  target: 'Branches' },
+            
             { color: "#FFCD00", text: "Core", target: 'Feed' },
             { color: "#192837", text: "Load", target: 'Loading' }
         ];
 
-        /** 
-         * Profile   -> ProfileScreen
-         * 
-         * Core      -> PathScreen + props 
-         * Personal  -> PathScreen + props
-         * Education -> PathScreen + props
-         * Business  -> PathScreen + props
-         * 
-         * Sound     -> (>NoPath<) + static mute button
-         * 
-         * About     -> AboutScreen
-        */
         const routes = mainRoutes;
         
-
         const tabs = routes.map( (route, id) => {
             // console.log(`Route: ${route.title} Screen: ${route.screen}`);
             const isSelected    = (id === this.state.selectedTab);
@@ -212,33 +198,6 @@ const styles = StyleSheet.create({
     }
 })
 
-
-// const Navigator = createDrawerNavigator({
-//     Loading: {
-//         screen: LoadingScreen
-//     },
-//     Home: {
-//         screen: HomeScreen
-//     },
-//     Feed: {
-//         screen: FeedScreen
-//     },
-//     Game: {
-//         screen: GuessingGame
-//     },
-//     Slides: {
-//         screen: SlideScreen
-//     },
-//     /** Greeting and Branch Selection Screen */
-//     Paths: {
-//         screen: PathsScreen
-//     }
-// }, {
-//     initialRouteName: 'Paths',
-//     contentComponent: DrawerContainer,
-//     drawerWidth: DEVICE_WIDTH * 0.70
-// })
-
 const Navigator = createDrawerNavigator({
     LoadingScreen: {
         screen: LoadingScreen
@@ -268,6 +227,9 @@ const Navigator = createDrawerNavigator({
     },
     Intro: {
         screen: IntroScreen,
+    },
+    Option: {
+        screen: OptionScreen,
     }
 }, {
     initialRouteName: 'Intro',
