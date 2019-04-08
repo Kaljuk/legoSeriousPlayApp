@@ -1,5 +1,6 @@
 /** Greeting and Branch Selection Screen */
 
+
 import React, { Component } from 'react';
 import {
     View, 
@@ -53,7 +54,7 @@ export default class PathsScreen extends Component {
     
     // this.props.navigator.navigate('DrawerOpen')
   }
-
+  //here you should put the content type into props if you go to solo personal mode or team!!
   selectContent(contentType=null) {
     this.setState({ contentType: contentType, showContent: true });
   }
