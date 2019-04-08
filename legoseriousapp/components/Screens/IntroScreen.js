@@ -9,11 +9,11 @@ import {
 import { createStackNavigator } from "react-navigation";
 import Swiper from 'react-native-swiper';
 import VideoSlide from './Slides/VideoSlide';
-import PathScreen from './PathScreen';
 import OptionScreen from './OptionScreen';
 
 const styles = StyleSheet.create({
   wrapper: {
+    flex: 1,
   },
   slide1: {
     flex: 1,
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
 })
 export const route = createStackNavigator({ 
   Option: {screen: OptionScreen},
-  Path: {screen: PathScreen}
 });
 
 export default class IntroScreen extends Component {
@@ -51,7 +50,7 @@ export default class IntroScreen extends Component {
           <TouchableOpacity onPress={()=> this.props.navigation.navigate('Option') & console.log("aa")
           }>
             <View style={{ marginBottom: 580, marginLeft: 300, position: "relative"}}>
-              <Text style={{color:'white', fontSize: 15, fontFamily: 'Ubuntu', textAlign: 'center'}}>Skip</Text>
+              <Text style={{color:'white', fontSize: 15, textAlign: 'center'}}>Skip</Text>
             </View>
           </TouchableOpacity>
           <Text style={styles.text}>What is LSP?</Text>

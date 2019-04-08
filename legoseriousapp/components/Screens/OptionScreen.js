@@ -3,11 +3,16 @@ import {
   StyleSheet, Text, View, TouchableOpacity 
 } from 'react-native';
 import {createStackNavigator} from 'react-navigation';
-import PathScreen from './PathScreen';
-import { mainRoutes } from './Contents';
+import Personal from './../Personal';
+import Team from './../Team';
+
+//import { mainRoutes } from './Contents';
 
 
-export const router = createStackNavigator({Path: {screen: PathScreen}});
+export const router = createStackNavigator({
+  Personal: {screen: Personal},
+  Team: {screen: Team},
+});
 
 export default class OptionScreen extends Component {
   constructor(props) {
@@ -15,14 +20,13 @@ export default class OptionScreen extends Component {
   }
   
   render() {
-    const routes = mainRoutes;
     return (
         <View>
             <Text>aoisdhaoiudsahio</Text>
-            <TouchableOpacity onPress={()=> this.props.navigation.navigate(Path)}>
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Personal')}>
                 <Text>Alone</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=> this.props.navigation.navigate(Path)}>
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Team')}>
                 <Text>Team</Text>
             </TouchableOpacity>
         </View>

@@ -18,7 +18,7 @@ class QuestionButton extends Component {
             <View>
                 <TouchableOpacity onPress={() => callable()}>
                 <View style={{ backgroundColor: color, width: 170, height: 70, marginTop: 30, justifyContent: 'center'}} >
-                        <Text style={{color:'white', fontSize: 20, fontFamily: 'Ubuntu', textAlign: 'center'}}>{text}</Text>
+                        <Text style={{color:'white', fontSize: 20, textAlign: 'center'}}>{text}</Text>
                 </View>
                 </TouchableOpacity>
             </View>

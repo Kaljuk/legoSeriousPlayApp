@@ -14,7 +14,6 @@ const QuestionBox = (props) => {
                 marginRight: 35,
                 fontSize: 25, 
                 textAlign: 'center', 
-                fontFamily:'Ubuntu',
                 color: 'white',
             }}>{props.question}</Text>
         </View>
