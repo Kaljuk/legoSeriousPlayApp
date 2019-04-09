@@ -99,11 +99,9 @@ export const mainRoutes = [
       content: [],
       icon: 'dash'
   },
-  // // Paths
-  // Core
   { 
-      title: 'Core', 
-      screen: 'Path', 
+      title: 'Team', 
+      screen: 'Team', 
       mainColor: '#f9c137', 
       secondaryColor: '#bf942a',
       content: coreContent,
@@ -112,7 +110,7 @@ export const mainRoutes = [
   // Personal
   { 
       title: 'Personal', 
-      screen: 'Path', 
+      screen: 'Personal', 
       mainColor: '#88c9b3', 
       secondaryColor: '#699a89',
       content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
