@@ -2,17 +2,11 @@ import React, {Component} from 'react';
 import { 
   StyleSheet, Text, View, TouchableOpacity 
 } from 'react-native';
-import {createStackNavigator} from 'react-navigation';
-import Personal from './../Personal';
-import Team from './../Team';
 
 //import { mainRoutes } from './Contents';
 
 
-export const router = createStackNavigator({
-  Personal: {screen: Personal},
-  Team: {screen: Team},
-});
+
 
 export default class OptionScreen extends Component {
   constructor(props) {

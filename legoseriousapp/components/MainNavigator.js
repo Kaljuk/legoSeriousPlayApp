@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+
 import IntroScreen from './Screens/IntroScreen';
 import OptionScreen from './Screens/OptionScreen';
-
-
-
-const DEVICE_WIDTH = Dimensions.get('window').width;
+import Personal from './Personal';
+import Team from './Team';
 
 class MainNavigator extends Component {
   render() {
@@ -23,9 +22,20 @@ const Navigator = createStackNavigator({
     Intro: {
         screen: IntroScreen
     },
-    Options: {
+    Option: {
         screen: OptionScreen
     },
+    Personal: {
+      screen: Personal
+    },
+    Team: {
+      screen: Team
+    },
     initialRouteName: 'Intro',
-});
+    },
+    {
+      navigationOptions: {
+          header: null,
+      }
+    });
 

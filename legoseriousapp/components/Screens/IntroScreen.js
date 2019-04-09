@@ -6,7 +6,6 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import { createStackNavigator } from "react-navigation";
 import Swiper from 'react-native-swiper';
 import VideoSlide from './Slides/VideoSlide';
 import OptionScreen from './OptionScreen';
@@ -34,9 +33,6 @@ const styles = StyleSheet.create({
     position: 'absolute'
   }
 })
-export const route = createStackNavigator({ 
-  Option: {screen: OptionScreen},
-});
 
 export default class IntroScreen extends Component {
     render(){
