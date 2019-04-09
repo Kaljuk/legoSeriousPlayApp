@@ -11,12 +11,15 @@ const TabIcon = (props={}) => (
   />
 );
 
-
+//import Screens
 import IntroScreen from './Screens/IntroScreen';
 import OptionScreen from './Screens/OptionScreen';
 import Personal from './Personal';
 import Team from './Team';
-
+import QuestionScreen from './Screens/Game-screen/QuestionScreen';
+//Drawer Container of different routes
+//Gets Data from Content.js 
+//Maps all the routes
 class DrawerContainer extends Component {
   constructor(props) {
       super(props);
@@ -97,7 +100,6 @@ class DrawerContainer extends Component {
               </TouchableHighlight>
           )
       })
-
       return (
           <View style={{
               flex: 1,
@@ -127,15 +129,15 @@ const SideMenu = createDrawerNavigator({
   Personal: {
     screen: Personal
   },
+  Game: {
+    screen: QuestionScreen
+  }
   },
   {
-  initialRouteName: 'Intro',
+  initialRouteName: 'Option',
   contentComponent: DrawerContainer
   }
 );
-
-const DEVICE_WIDTH = Dimensions.get('window').width;
-
 
 class MainNavigator extends Component { 
   render() {
