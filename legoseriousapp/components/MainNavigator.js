@@ -134,7 +134,7 @@ const SideMenu = createDrawerNavigator({
   }
   },
   {
-  initialRouteName: 'Option',
+  initialRouteName: 'Intro',
   contentComponent: DrawerContainer
   }
 );
