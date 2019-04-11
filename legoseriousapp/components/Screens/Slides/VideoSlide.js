@@ -25,16 +25,12 @@ export default class VideoSlide extends React.Component {
   render() {
 
     console.log('Render videoSlide');
-    
-    const uri = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4';
 
     return (<VideoPlayer
       videoProps={{
         shouldPlay: true,
         resizeMode: Video.RESIZE_MODE_CONTAIN,
-        source: {
-          uri: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-        },
+        source: require('./../../../assets/videos/LSPintro_2.mp4'),
       }}
       isPortrait={true}
       playFromPositionMillis={0}
