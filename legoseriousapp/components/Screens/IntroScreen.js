@@ -55,6 +55,7 @@ export default class IntroScreen extends Component {
     render(){
       return (
         <Swiper style={styles.wrapper} showsButtons={true}>
+        {/** FIRST SLIDE */}
           <View style={styles.slide0}>
               <Image source={logo} style={{width: 180, height: 75}}/>
                   <View style={styles.textBox}>
@@ -62,10 +63,12 @@ export default class IntroScreen extends Component {
                     {/* <Text style={styles.text}>Lego Serious Play</Text> */}
                   </View>
           </View>
-            {/*<View style={styles.slide1}>
+          {/** SECOND SLIDE, VIDEO */}
+            <View style={styles.slide1}>
               <VideoSlide />
-              {/* <Text style={styles.text}>Lego Serious Play</Text>}
-            </View>*/}
+               <Text style={styles.text}>Lego Serious Play</Text>}
+            </View>
+          {/** THIRD SLIDE, LSP */}
           <View style={styles.slide2}>
               <TouchableOpacity onPress={()=> this.props.navigation.navigate('Option') & console.log("aa")}>
                   <View style={{ marginBottom: 580, marginLeft: 300, position: "relative"}}>
