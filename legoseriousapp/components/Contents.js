@@ -100,22 +100,38 @@ export const mainRoutes = [
       icon: 'dash'
   },
   { 
+    title: 'Core', 
+    screen: 'Core', 
+    mainColor: '#f9c137', 
+    secondaryColor: '#bf942a',
+    content: coreContent,
+    icon: 'database'
+  },
+  { 
+    title: 'Mode', 
+    screen: 'Mode', 
+    mainColor: '#f9c137', 
+    secondaryColor: '#bf942a',
+    content: coreContent,
+    icon: 'database'
+  },
+  /*{ 
       title: 'Team', 
       screen: 'Team', 
       mainColor: '#f9c137', 
       secondaryColor: '#bf942a',
       content: coreContent,
       icon: 'database'
-  },
+  },*/
   // Personal
-  { 
+  /*{ 
       title: 'Personal', 
       screen: 'Personal', 
       mainColor: '#88c9b3', 
       secondaryColor: '#699a89',
       content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
       icon: 'person'
-  },
+  },*/
   // Settings
   { 
       title: 'Settings', 
@@ -124,8 +140,16 @@ export const mainRoutes = [
       secondaryColor: null,
       content: [],
       icon: 'gear'
-  }
+  },
   // // Sound
 
   // // About
+  { 
+    title: 'About', 
+    screen: 'About',//'Settings', 
+    mainColor: '#4c4c4c', 
+    secondaryColor: null,
+    content: [],
+    icon: 'gear'
+}
 ]
