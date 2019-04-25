@@ -26,15 +26,21 @@ export default class VideoSlide extends React.Component {
 
     console.log('Render videoSlide');
 
-    return (<VideoPlayer
+    return (
+
+    <VideoPlayer
       videoProps={{
         shouldPlay: true,
         resizeMode: Video.RESIZE_MODE_CONTAIN,
-        source: require('./../../../assets/videos/LSPintro_2.mp4'),
+        source: require('./../../../assets/videos/introVideoLSP.mp4'),
+        
       }}
       isPortrait={true}
       playFromPositionMillis={0}
+      videoWidth={800}
+      videoHeight={900}
     />
+
     )
   }
 }
