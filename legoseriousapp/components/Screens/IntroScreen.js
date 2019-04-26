@@ -57,7 +57,7 @@ export default class IntroScreen extends Component {
         <Swiper style={styles.wrapper} showsButtons={true}>
         {/** FIRST SLIDE */}
           <View style={styles.slide0}>
-              <Image source={logo} style={{width: 180, height: 75}}/>
+              {<Image source={logo} style={{width: 180, height: 75}}/>}
                   <View style={styles.textBox}>
                     <Text style={{color:'white', fontSize: 18, textAlign: 'center'}}>Learn LEGO® Serious Play® Methodology for  communication, creativity and challenges</Text>
                     {/* <Text style={styles.text}>Lego Serious Play</Text> */}
@@ -66,10 +66,11 @@ export default class IntroScreen extends Component {
           {/** SECOND SLIDE, VIDEO */}
             <View style={styles.slide1}>
               <VideoSlide />
-               <Text style={styles.text}>Lego Serious Play</Text>}
+               
             </View>
           {/** THIRD SLIDE, LSP */}
           <View style={styles.slide2}>
+          
               <TouchableOpacity onPress={()=> this.props.navigation.navigate('Option') & console.log("aa")}>
                   <View style={{ marginBottom: 580, marginLeft: 300, position: "relative"}}>
                       <Text style={{color:'white', fontSize: 15, textAlign: 'center'}}>Skip</Text>
