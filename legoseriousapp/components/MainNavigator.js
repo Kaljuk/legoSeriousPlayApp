@@ -137,7 +137,10 @@ const SideMenu = createDrawerNavigator({
     screen: QuestionScreen
   },
   Event: {
-    screen: EventScreen
+    screen: (props) => <EventScreen {...props} title="TestFromScreen" />,
+    navigationOptions: ({ navigation }) => ({
+        title: "Test"
+    })
   }
   },
   {
