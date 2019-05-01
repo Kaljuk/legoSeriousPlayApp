@@ -1,5 +1,5 @@
-
-
+import React, { Component } from 'react';
+import { View, Text, Image } from 'react-native';
 export default contents = {
   core: {
     collabGame: {
@@ -38,6 +38,46 @@ export default contents = {
           answers: [{text: 'Play again!'}, {text:'Quit'}]
           }
       ]
+    },
+    mindGame: {
+      questions: [
+        {
+          question: 'Caption the image',
+          picture: require('./../assets/mindGameImages/man_with_fire.jpg') ,
+          answers: [{text:'Story'},{text:'Canvas'},{text:'Color'},{text:'Solitude'}]
+        },
+        {
+          question: 'Help me!',
+          picture: require('./../assets/mindGameImages/roof.jpg'),
+          answers: [{text:'Closeness'},{text:'Cookie'},{text:'Coverage'},{text:'Roof'}]
+        },
+        {
+          question: 'What do you see?',
+          picture: require('./../assets/mindGameImages/bear.jpg'),
+          answers: [{text:'Life'},{text:'Robot'},{text:'Bear'},{text:'Nature'}]
+        },
+        {
+          question: 'Caption the image!',
+          picture: require('./../assets/mindGameImages/apple.jpg'),
+          answers: [{text:'Sour'},{text:'Bounce'},{text:'Apple'},{text:'Knife'}]
+        },
+        {
+          question: 'Help me!',
+          picture: require('./../assets/mindGameImages/piano.jpg'),
+          answers: [{text:'Piano'},{text:'Play'},{text:'Sensations'},{text:'Teeth'}]
+        },
+        {
+          question: 'Title the image',
+          picture: require('./../assets/mindGameImages/door.jpg'),
+          answers: [{text:'Mystery'},{text:'Door'},{text:'Music'},{text:'Knock'}]
+        },
+        {
+          question: 'Title the image',
+          picture: require('./../assets/mindGameImages/mouse.jpg'),
+          answers: [{text:'Scientist'},{text:'Nasty'},{text:'Cheese'},{text:'Mouse'}]
+        },
+      ]
+
     }
   },
   personal: {
