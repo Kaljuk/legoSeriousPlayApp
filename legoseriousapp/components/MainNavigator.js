@@ -17,7 +17,7 @@ import OptionScreen from './Screens/OptionScreen';
 import Personal from './Personal';
 import Team from './Team';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
-
+import MindGameScreen from './Screens/Game-screen/MindGameScreen';
 // Screen for all the events (little action bubbles you press in Team | Alone)
 import EventScreen from './Screens/EventScreen';
 
@@ -136,6 +136,9 @@ const SideMenu = createDrawerNavigator({
   Game: {
     screen: QuestionScreen
   },
+  MindGame: {
+    screen: MindGameScreen
+  },
   Event: {
     screen: (props) => <EventScreen {...props} title="TestFromScreen" />,
     navigationOptions: ({ navigation }) => ({
@@ -144,7 +147,7 @@ const SideMenu = createDrawerNavigator({
   }
   },
   {
-  initialRouteName: 'Intro',
+  initialRouteName: 'MindGame',
   contentComponent: DrawerContainer
   }
 );

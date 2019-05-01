@@ -33,7 +33,7 @@ export default class VideoSlide extends React.Component {
 							source={require('./../../../assets/videos/introVideoLSP.mp4')}
 							shouldPlay={this.state.shouldPlay}
 							resizeMode="cover"
-							style={{ width, height: 350 }}
+							style={{ width, height: 330 }}
 							isMuted={this.state.mute}
 						/>
 						<View style={styles.controlBar}>
