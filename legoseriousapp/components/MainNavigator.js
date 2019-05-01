@@ -3,11 +3,13 @@ import { View, Text, Dimensions, TouchableHighlight } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation';
 import { mainRoutes } from './Contents';
 import Icon from 'react-native-vector-icons/Octicons';
+
 const TabIcon = (props={}) => (
   <Icon
     name={props.icon || 'person'} 
     size={30} 
-    color={props.color || '#fff'} 
+    color={props.color || '#fff'}
+    
   />
 );
 
@@ -18,6 +20,7 @@ import Personal from './Personal';
 import Team from './Team';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 import MindGameScreen from './Screens/Game-screen/MindGameScreen';
+
 // Screen for all the events (little action bubbles you press in Team | Alone)
 import EventScreen from './Screens/EventScreen';
 
@@ -63,32 +66,34 @@ class DrawerContainer extends Component {
           const isHighlighted = (id === this.state.pressedTab) || isSelected;
           
           const navigateToRoute = route.screen && (() => { 
-              console.log("Routes",route);
-              console.log('Navigating to', route.title);
-              const data = {
-                  title: route.title,
-                  mainColor: route.mainColor,
-                  secondaryColor: route.secondaryColor,
-                  content: route.content
-              }
-              this.setState({ selectedTab: id })
-              navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
-              navigation.closeDrawer();
+            console.log("Routes",route);
+            console.log('Navigating to', route.title);
+            const data = {
+                title: route.title,
+                mainColor: route.mainColor,
+                secondaryColor: route.secondaryColor,
+                content: route.content
+            }
+            this.setState({ selectedTab: id })
+            console.log("Sending data", data);
+            
+            navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
+            navigation.closeDrawer();
           }) || (() => console.log('No Screen Assigned'));
           
           const textColor = (isHighlighted) ? '#fff' : '#808080';
 
           return (
               <TouchableHighlight key={id} 
-              onPressIn={()=>this.isHovering(id)} 
-              onPressOut={()=>this.isHovering(-1)} 
-              onPress={() => navigateToRoute()} 
+                onPressIn={()=>this.isHovering(id)} 
+                onPressOut={()=>this.isHovering(-1)} 
+                onPress={() => navigateToRoute()} 
 
-              underlayColor={ route.mainColor || '#808080' }
-              style={{ 
-                  flex: 0.15, flexDirection: 'column', justifyContent:'center',
-                  backgroundColor: isSelected && route.mainColor || '#fff'
-                  /*, backgroundColor: 'blue'*/
+                underlayColor={ route.mainColor || '#808080' }
+                style={{ 
+                    flex: 0.15, flexDirection: 'column', justifyContent:'center',
+                    backgroundColor: isSelected && route.mainColor || '#fff'
+                    /*, backgroundColor: 'blue'*/
               }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', paddingLeft: 10/*, backgroundColor: 'red'*/ }}>
                       {/* Icon / Logo */}
@@ -121,42 +126,40 @@ class DrawerContainer extends Component {
 
 
 const SideMenu = createDrawerNavigator({
-  Intro: {
-    screen: IntroScreen,
-  },
-  Option: {
-    screen: OptionScreen,
-  },
-  Team: {
-    screen: Team
-  },
-  Personal: {
-    screen: Personal
-  },
-  Game: {
-    screen: QuestionScreen
-  },
+    Intro: {
+        screen: IntroScreen,
+    },
+    Option: {
+        screen: OptionScreen,
+    },
+    Team: {
+        screen: Team
+    },
+    Personal: {
+        screen: Personal
+    },
+    Game: {
+        screen: QuestionScreen
+    },
+  
   MindGame: {
     screen: MindGameScreen
-  },
-  Event: {
-    screen: (props) => <EventScreen {...props} title="TestFromScreen" />,
-    navigationOptions: ({ navigation }) => ({
-        title: "Test"
-    })
-  }
-  },
+  }},
   {
-  initialRouteName: 'MindGame',
-  contentComponent: DrawerContainer
+    initialRouteName: 'Intro',
+    contentComponent: DrawerContainer
   }
+
 );
 
 class MainNavigator extends Component { 
   render() {
-    return ( <SideMenu />
+    return ( 
+      <SideMenu />
     );
   }
 }
 
 export default MainNavigator;
+
+

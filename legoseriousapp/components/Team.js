@@ -59,6 +59,7 @@ export default class Team extends React.Component {
   
 
     render() {
+        const callable = this.openNavigator || (() => console.log('SideMenuButton: Callable'));
         // Title of the current path
         const title = this.props.title || 'Team';
         // Colors
@@ -119,10 +120,12 @@ export default class Team extends React.Component {
                 flexDirection: 'column',
                 backgroundColor: mainColor 
             }}>
-            <View style={{marginTop: 25, marginLeft:25}}>
-              <MenuIcon />
-              </View>
-                <ScrollView>
+            <View style={{marginTop: 35, marginLeft:25}}>
+                <TouchableOpacity onPress={() => callable()}>
+                    <MenuIcon />
+                </TouchableOpacity>
+            </View>
+            <ScrollView>
                     {/* Header with nav button */}
                     <View style={{ 
                         flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', 
@@ -139,7 +142,7 @@ export default class Team extends React.Component {
                     }}>
                         { pathElements }
                     </View>
-                </ScrollView>
+            </ScrollView>
             </View>
         )
     }
