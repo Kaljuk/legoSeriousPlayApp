@@ -17,6 +17,10 @@ import OptionScreen from './Screens/OptionScreen';
 import Personal from './Personal';
 import Team from './Team';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
+
+// Screen for all the events (little action bubbles you press in Team | Alone)
+import EventScreen from './Screens/EventScreen';
+
 //Drawer Container of different routes
 //Gets Data from Content.js 
 //Maps all the routes
@@ -131,6 +135,9 @@ const SideMenu = createDrawerNavigator({
   },
   Game: {
     screen: QuestionScreen
+  },
+  Event: {
+    screen: EventScreen
   }
   },
   {
