@@ -121,31 +121,25 @@ class DrawerContainer extends Component {
 
 
 const SideMenu = createDrawerNavigator({
-  Intro: {
-    screen: IntroScreen,
-  },
-  Option: {
-    screen: OptionScreen,
-  },
-  Team: {
-    screen: Team
-  },
-  Personal: {
-    screen: Personal
-  },
-  Game: {
-    screen: QuestionScreen
-  },
-  Event: {
-    screen: (props) => <EventScreen {...props} title="TestFromScreen" />,
-    navigationOptions: ({ navigation }) => ({
-        title: "Test"
-    })
-  }
+    Intro: {
+        screen: IntroScreen,
+    },
+    Option: {
+        screen: OptionScreen,
+    },
+    Team: {
+        screen: Team
+    },
+    Personal: {
+        screen: Personal
+    },
+    Game: {
+        screen: QuestionScreen
+    }
   },
   {
-  initialRouteName: 'Intro',
-  contentComponent: DrawerContainer
+    initialRouteName: 'Intro',
+    contentComponent: DrawerContainer
   }
 );
 
