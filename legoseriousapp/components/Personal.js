@@ -140,9 +140,7 @@ export default class Personal extends React.Component {
             }}>
             <View style={{marginTop: 35, marginLeft:25}}>
                 <TouchableOpacity onPress={() => callable()}>
-                    
-                        <MenuIcon />
-
+                    <MenuIcon />
                 </TouchableOpacity>
             </View>
                 <ScrollView>

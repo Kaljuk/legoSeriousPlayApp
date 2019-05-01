@@ -122,14 +122,11 @@ export default class Team extends React.Component {
             }}>
             <View style={{marginTop: 35, marginLeft:25}}>
                 <TouchableOpacity onPress={() => callable()}>
-                    
-                        <MenuIcon />
-
+                    <MenuIcon />
                 </TouchableOpacity>
+                <MenuIcon />
             </View>
-              <MenuIcon />
-              </View>
-                <ScrollView>
+            <ScrollView>
                     {/* Header with nav button */}
                     <View style={{ 
                         flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', 
@@ -146,7 +143,7 @@ export default class Team extends React.Component {
                     }}>
                         { pathElements }
                     </View>
-                </ScrollView>
+            </ScrollView>
             </View>
         )
     }
