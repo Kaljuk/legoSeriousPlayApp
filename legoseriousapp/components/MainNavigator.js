@@ -3,11 +3,13 @@ import { View, Text, Dimensions, TouchableHighlight } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation';
 import { mainRoutes } from './Contents';
 import Icon from 'react-native-vector-icons/Octicons';
+
 const TabIcon = (props={}) => (
   <Icon
     name={props.icon || 'person'} 
     size={30} 
-    color={props.color || '#fff'} 
+    color={props.color || '#fff'}
+    
   />
 );
 
@@ -80,15 +82,15 @@ class DrawerContainer extends Component {
 
           return (
               <TouchableHighlight key={id} 
-              onPressIn={()=>this.isHovering(id)} 
-              onPressOut={()=>this.isHovering(-1)} 
-              onPress={() => navigateToRoute()} 
+                onPressIn={()=>this.isHovering(id)} 
+                onPressOut={()=>this.isHovering(-1)} 
+                onPress={() => navigateToRoute()} 
 
-              underlayColor={ route.mainColor || '#808080' }
-              style={{ 
-                  flex: 0.15, flexDirection: 'column', justifyContent:'center',
-                  backgroundColor: isSelected && route.mainColor || '#fff'
-                  /*, backgroundColor: 'blue'*/
+                underlayColor={ route.mainColor || '#808080' }
+                style={{ 
+                    flex: 0.15, flexDirection: 'column', justifyContent:'center',
+                    backgroundColor: isSelected && route.mainColor || '#fff'
+                    /*, backgroundColor: 'blue'*/
               }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', paddingLeft: 10/*, backgroundColor: 'red'*/ }}>
                       {/* Icon / Logo */}
@@ -145,7 +147,8 @@ const SideMenu = createDrawerNavigator({
 
 class MainNavigator extends Component { 
   render() {
-    return ( <SideMenu />
+    return ( 
+      <SideMenu />
     );
   }
 }
