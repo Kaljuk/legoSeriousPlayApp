@@ -124,7 +124,6 @@ export default class Team extends React.Component {
                 <TouchableOpacity onPress={() => callable()}>
                     <MenuIcon />
                 </TouchableOpacity>
-                <MenuIcon />
             </View>
             <ScrollView>
                     {/* Header with nav button */}
