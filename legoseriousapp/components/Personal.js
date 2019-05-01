@@ -5,6 +5,8 @@ import {
     Text
 } from 'react-native';
 
+// EventButton
+import EventButton from './EventButton';
 
 import Icon from 'react-native-vector-icons/Octicons';
 const MenuIcon = () => (
@@ -44,8 +46,6 @@ export default class Personal extends React.Component {
         
         this.props.navigation.openDrawer() 
       }  
-      
-      // this.props.navigator.navigate('DrawerOpen')
     }
   
     selectContent(contentType=null) {
@@ -85,6 +85,19 @@ export default class Personal extends React.Component {
             
             const elements = elementRow.map( (element={}, elementId) => {
                 const contentTitle = (element.contentData && '*' || '')+element.title || 'Tiitel';
+
+                return (
+                    <EventButton 
+                        key={ elementId } 
+                        selectContent={ this.selectContent.bind(this) } 
+                        contentColor={ secondaryColor }
+                        
+                        contentTitle={ element.contentTitle }
+                        contentType ={ element.contentType }
+                        contentData ={ element.content }
+                    />
+                )
+                /*
                 return (
                     <TouchableOpacity  key={ elementId } style={{ 
                         height: 100,
@@ -104,6 +117,7 @@ export default class Personal extends React.Component {
                         </View>
                     </TouchableOpacity>
                 )
+                */
             })
 
             return (
