@@ -140,13 +140,8 @@ const SideMenu = createDrawerNavigator({
     }
   },
   {
-<<<<<<< HEAD
-  initialRouteName: 'Option',
-  contentComponent: DrawerContainer
-=======
     initialRouteName: 'Intro',
     contentComponent: DrawerContainer
->>>>>>> 5332318338e4f6e9ef2661eb4765d317ee54c932
   }
 );
 
