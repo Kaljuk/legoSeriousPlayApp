@@ -90,7 +90,7 @@ export default class Personal extends React.Component {
                         selectContent={ this.selectContent.bind(this) } 
                         contentColor={ secondaryColor }
                         
-                        contentTitle={ element.contentTitle }
+                        contentTitle={ contentTitle }
                         contentType ={ element.contentType }
                         contentData ={ element.content }
                     />
