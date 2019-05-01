@@ -2,19 +2,19 @@ import React from 'react';
 import {
     View, ScrollView,
     TouchableOpacity,
-
     Text
 } from 'react-native';
 
 
 import Icon from 'react-native-vector-icons/Octicons';
 const MenuIcon = () => (
-  <Icon 
-    name='three-bars' 
-    size={30} 
-    color='#000' 
-  />
+        <Icon 
+            name='three-bars' 
+            size={30} 
+            color='#000' 
+        />
 );
+
 
 export default class Personal extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ export default class Personal extends React.Component {
           contentData: null
         }
         this.openNavigator = this.openNavigator.bind(this);
+        console.log(props.navigation)
         this.selectContent = this.selectContent.bind(this);
         this.hideContent   = this.hideContent.bind(this);
     }
@@ -40,6 +41,7 @@ export default class Personal extends React.Component {
     openNavigator() {
       console.log('Opening');
       if ((this.props.navigation || {}).navigate) {
+        
         this.props.navigation.openDrawer() 
       }  
       
@@ -59,6 +61,8 @@ export default class Personal extends React.Component {
   
 
     render() {
+
+        const callable = this.openNavigator || (() => console.log('SideMenuButton: Callable'));
         // Title of the current path
         const title = this.props.title || 'Personal';
         // Colors
@@ -114,14 +118,19 @@ export default class Personal extends React.Component {
         })
         
         return (
+            
             <View style={{ 
                 flex: 1, 
                 flexDirection: 'column',
                 backgroundColor: mainColor 
             }}>
-            <View style={{marginTop: 25, marginLeft:25}}>
-              <MenuIcon />
-              </View>
+            <View style={{marginTop: 35, marginLeft:25}}>
+                <TouchableOpacity onPress={() => callable()}>
+                    
+                        <MenuIcon />
+
+                </TouchableOpacity>
+            </View>
                 <ScrollView>
                     {/* Header with nav button */}
                     <View style={{ 

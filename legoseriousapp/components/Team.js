@@ -119,7 +119,7 @@ export default class Team extends React.Component {
                 flexDirection: 'column',
                 backgroundColor: mainColor 
             }}>
-            <View style={{marginTop: 25, marginLeft:25}}>
+            <View style={{marginTop: 35, marginLeft:25}}>
               <MenuIcon />
               </View>
                 <ScrollView>
