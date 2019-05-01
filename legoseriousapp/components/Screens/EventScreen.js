@@ -20,7 +20,7 @@ export default class EventScreen extends Component {
       <View style={{ flex: 1 }}>
         {
           eventType == 'CollabBasic' &&
-          <QuestionScreen />
+          <QuestionScreen questions={ this.props.contentData.questions} />
         }
       </View>
     );
