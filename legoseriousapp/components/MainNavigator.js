@@ -65,17 +65,19 @@ class DrawerContainer extends Component {
           const isHighlighted = (id === this.state.pressedTab) || isSelected;
           
           const navigateToRoute = route.screen && (() => { 
-              console.log("Routes",route);
-              console.log('Navigating to', route.title);
-              const data = {
-                  title: route.title,
-                  mainColor: route.mainColor,
-                  secondaryColor: route.secondaryColor,
-                  content: route.content
-              }
-              this.setState({ selectedTab: id })
-              navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
-              navigation.closeDrawer();
+            console.log("Routes",route);
+            console.log('Navigating to', route.title);
+            const data = {
+                title: route.title,
+                mainColor: route.mainColor,
+                secondaryColor: route.secondaryColor,
+                content: route.content
+            }
+            this.setState({ selectedTab: id })
+            console.log("Sending data", data);
+            
+            navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
+            navigation.closeDrawer();
           }) || (() => console.log('No Screen Assigned'));
           
           const textColor = (isHighlighted) ? '#fff' : '#808080';

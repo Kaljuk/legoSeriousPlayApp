@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-
+  View
 } from 'react-native';
+
+// Events
+import QuestionScreen from './Game-screen/QuestionScreen';
 
 
 export default class EventScreen extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      eventOver: false,
-      eventName: props.title || 'TestTitle'
-    }
-    
   }
   render() {
-    console.log('test');
+    const eventType = this.props.contentType;
     
+    console.log('DATAAA', this.props.contentData);
     return (
-      <View style={{ flex: 1, flexDirection: 'column', backgroundColor: "green", alignItems: 'center'}}>
-        {/* Event SubScreen goes here */}
-        
-        <Text style={{ flex: .5, textAlignVertical: 'center'}}>
-          { this.state.eventName } 
-          and 
-          { this.props.title }
-        </Text>
-      
+      <View style={{ flex: 1 }}>
+        {
+          eventType == 'CollabBasic' &&
+          <QuestionScreen />
+        }
       </View>
     );
 }

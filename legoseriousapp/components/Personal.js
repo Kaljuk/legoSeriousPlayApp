@@ -5,10 +5,14 @@ import {
     Text
 } from 'react-native';
 
+// Games
+import QuestionScreen from './Screens/Game-screen/QuestionScreen'
+
 // EventButton
 import EventButton from './EventButton';
 
 import Icon from 'react-native-vector-icons/Octicons';
+import EventScreen from './Screens/EventScreen';
 const MenuIcon = () => (
         <Icon 
             name='three-bars' 
@@ -16,6 +20,8 @@ const MenuIcon = () => (
             color='#000' 
         />
 );
+
+
 
 
 export default class Personal extends React.Component {
@@ -32,13 +38,8 @@ export default class Personal extends React.Component {
         console.log(props.navigation)
         this.selectContent = this.selectContent.bind(this);
         this.hideContent   = this.hideContent.bind(this);
+        
     }
-
-    selectContent(contentType, content) {
-        console.log("Selected data", contentType, content)
-        this.props.selectContent(contentType, content);
-    }
-
 
     openNavigator() {
       console.log('Opening');
@@ -48,8 +49,11 @@ export default class Personal extends React.Component {
       }  
     }
   
-    selectContent(contentType=null) {
-      this.setState({ contentType: contentType, showContent: true });
+    selectContent(contentType=null, contentData=null) {
+        console.log('Selected data', contentData);
+        
+      contentType = contentType || QuestionScreen;
+      this.setState({ contentType: contentType, contentData: contentData}, () => this.showContent());
     }
   
     showContent() {
@@ -61,6 +65,8 @@ export default class Personal extends React.Component {
   
 
     render() {
+        // console.log('DATA', this.props.navigation.state.params.data.content);
+        
 
         const callable = this.openNavigator || (() => console.log('SideMenuButton: Callable'));
         // Title of the current path
@@ -78,14 +84,16 @@ export default class Personal extends React.Component {
         
         const fillerContent = [rowOne, rowTwo, rowThree, rowFour];
 
-        const content = fillerContent;
+        const content = this.props.navigation.state.params.data.content || fillerContent;
         // console.log('Content', content);
         
         const pathElements = content.map( (elementRow=[], elementRowId) => {
-            
+            // Event Buttons
             const elements = elementRow.map( (element={}, elementId) => {
                 const contentTitle = (element.contentData && '*' || '')+element.title || 'Tiitel';
-
+                const contentData = element.contentData;
+                console.log('contentD', contentTitle, contentData);
+                
                 return (
                     <EventButton 
                         key={ elementId } 
@@ -93,31 +101,10 @@ export default class Personal extends React.Component {
                         contentColor={ secondaryColor }
                         
                         contentTitle={ contentTitle }
-                        contentType ={ element.contentType }
-                        contentData ={ element.content }
+                        contentType ={ element.contentType || null }
+                        contentData ={ element.contentData }
                     />
                 )
-                /*
-                return (
-                    <TouchableOpacity  key={ elementId } style={{ 
-                        height: 100,
-                        width : 100,
-                        marginHorizontal: 5,
-                        flexDirection: 'column',
-                        alignItems: 'center'
-                    }} onPress={ () => this.selectContent(element.contentType, element.content)}>
-                        <View style={{
-                            height: 80,
-                            width : 80,
-                            borderRadius: 40,
-                            backgroundColor: secondaryColor
-                        }}></View>
-                        <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 4 }}>
-                            <Text style={{  fontSize: 12, color: 'white' }} numberOfLines={1}> { contentTitle } </Text>
-                        </View>
-                    </TouchableOpacity>
-                )
-                */
             })
 
             return (
@@ -131,18 +118,14 @@ export default class Personal extends React.Component {
             )
         })
         
-        return (
-            
-            <View style={{ 
-                flex: 1, 
-                flexDirection: 'column',
-                backgroundColor: mainColor 
-            }}>
-            <View style={{marginTop: 35, marginLeft:25}}>
-                <TouchableOpacity onPress={() => callable()}>
-                    <MenuIcon />
-                </TouchableOpacity>
-            </View>
+        // Events screen for events
+        const PersonalMenu = (
+            <View>
+                <View style={{marginTop: 35, marginLeft:25}}>
+                    <TouchableOpacity onPress={() => callable()}>
+                        <MenuIcon />
+                    </TouchableOpacity>
+                </View>
                 <ScrollView>
                     {/* Header with nav button */}
                     <View style={{ 
@@ -161,6 +144,20 @@ export default class Personal extends React.Component {
                         { pathElements }
                     </View>
                 </ScrollView>
+            </View>
+        )
+
+        return (
+            
+            <View style={{ 
+                flex: 1, 
+                flexDirection: 'column',
+                backgroundColor: mainColor 
+            }}>
+                {
+                    !this.state.showContent && PersonalMenu
+                    || <EventScreen contentType={this.state.contentType} contentData={this.state.contentData} />
+                }
             </View>
         )
     }

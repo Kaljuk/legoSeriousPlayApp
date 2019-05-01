@@ -17,6 +17,16 @@ const LockIcon = () => (
     style={{ marginLeft: 10}}
   />
 );
+
+const KeyIcon = () => (
+  <Icon 
+    name='key' 
+    size={40} 
+    color='#FFF' 
+    style={{ marginLeft: 10}}
+  />
+);
+
 // export default 
 class EventButton1 extends Component {
   constructor(props) {
@@ -81,12 +91,22 @@ export default class EventButton extends Component {
     ).start()
   }
 
+  eventPressed() {
+    
+    const contentType  = this.props.contentType,
+          contentData  = this.props.contentData;
+
+    console.log('Pressed', contentData);
+    if (this.normal && contentData)
+      this.props.selectContent(contentType, contentData)
+    this.bounceCircle()
+    
+  }
+
   render() {
     
     const 
       contentColor = this.props.contentColor,
-      contentType  = this.props.contentType,
-      contentData  = this.props.contentData,
       contentTitle = this.props.contentTitle;
       
     return (
@@ -98,10 +118,7 @@ export default class EventButton extends Component {
           flexDirection: 'column',
           alignItems: 'center'
         }} 
-        onPress={ () => {
-          this.bounceCircle()
-          this.props.selectContent(contentType, contentData)
-        }}
+        onPress={ () => this.eventPressed() }
       >
         <Animated.View style={{
             height: this.circleSize || 100,
@@ -112,7 +129,8 @@ export default class EventButton extends Component {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-          { !this.normal && <LockIcon /> }
+          { (!this.normal && !this.props.contentData) && <LockIcon /> }
+          { (this.normal == false && this.props.contentData) && <KeyIcon />  }
         </Animated.View>
         <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 4 }}>
             <Text style={{  fontSize: 12, color: 'white' }} numberOfLines={1}> { contentTitle } </Text>

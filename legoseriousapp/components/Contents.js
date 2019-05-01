@@ -113,7 +113,20 @@ export const mainRoutes = [
       screen: 'Personal', 
       mainColor: '#88c9b3', 
       secondaryColor: '#699a89',
-      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' },{ title: 'Collab Game' },{ title: 'Practical Game' }] ],
+      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' }, 
+            { 
+              title: 'Collab Game', 
+              contentType: 'CollabBasic', 
+              contentData: {
+                questions: contents.core.collabGame.questions,
+                share: {
+                  contentType: '',//'link',
+                  contentUrl: "http://seriousplaypro.com/",//"https://facebook.com",
+                  contentDescription: 'Facebook sharing is easy!'
+                }
+              }
+          
+          },{ title: 'Practical Game' }] ],
       icon: 'person'
   },
   { 
