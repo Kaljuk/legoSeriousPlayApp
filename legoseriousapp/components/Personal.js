@@ -74,15 +74,6 @@ export default class Personal extends React.Component {
         // Colors
         const mainColor = this.props.mainColor || '#88c9b3';
         const secondaryColor = this.props.secondaryColor || '#699a89';
-        
-        // Icon = picture on the content button, isNew: has the user clicked on it before?
-        const rowOne = [{ title: 'Tut', icon: null, isNew: false }]
-        const rowTwo = [{ title: 'Vid', icon: null, isNew: false }]        
-        const rowThree = [{ title: 'Infographic', icon: null, isNew: true }, { title: 'Infographic', icon: null, isNew: true }]
-        const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true, contentType: 'questionGame' }]
-
-        
-        const fillerContent = [rowOne, rowTwo, rowThree, rowFour];
 
         const content = this.props.navigation.state.params.data.content || fillerContent;
         // console.log('Content', content);

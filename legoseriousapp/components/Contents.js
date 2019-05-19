@@ -108,7 +108,12 @@ const coreContent = [
   // // Fourth row - Games
   [
     { 
-      title: 'Mind Game' 
+      title: 'Mind Game',
+
+      contentType: 'mindGame',
+      contentData: {
+      questions: contents.core.mindGame.questions
+    }
     },
     { 
       title: 'Collab Game', 
@@ -153,7 +158,16 @@ export const mainRoutes = [
       screen: 'Personal', 
       mainColor: '#88c9b3', 
       secondaryColor: '#699a89',
-      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [{ title: 'Mind Game' }, 
+      content: [ [{ title: 'Tutorial' }], [{ title: 'Video' }], [{ title: 'Infograpic' },{ title: 'Infographic' }], [
+            { 
+            title: 'Mind Game',
+            contentType: 'MindBasic',
+            contentData: {
+              questions : contents.core.mindGame.questions
+            },
+          
+            }
+            , 
             { 
               title: 'Collab Game', 
               contentType: 'CollabBasic', 

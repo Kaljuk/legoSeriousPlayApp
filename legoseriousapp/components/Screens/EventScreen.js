@@ -5,6 +5,7 @@ import {
 
 // Events
 import QuestionScreen from './Game-screen/QuestionScreen';
+import MindGameScreen from './Game-screen/MindGameScreen';
 
 
 export default class EventScreen extends Component {
@@ -21,6 +22,10 @@ export default class EventScreen extends Component {
         {
           eventType == 'CollabBasic' &&
           <QuestionScreen questions={ this.props.contentData.questions} />
+        }
+        {
+          eventType == 'MindBasic' && 
+          <MindGameScreen questions={ this.props.contentData.questions} />
         }
       </View>
     );

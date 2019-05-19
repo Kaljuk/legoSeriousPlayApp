@@ -10,9 +10,7 @@ export default class QuestionButton extends Component {
 
   render() {
     return (
-      <View>
-        <Text> QuestionButton Component </Text>
-      </View>
+      <View></View>
     );
   }
 }

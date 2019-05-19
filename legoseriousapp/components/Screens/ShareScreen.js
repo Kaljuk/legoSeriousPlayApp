@@ -28,22 +28,25 @@ export default class ShareScreen extends Component {
       alert(error.message);
     }
   };
+  quit = () =>{
+    this.props.navigation.navigate('Personal')
+  }
 
   render() {
       //Gets scores from question buttons and computes results with an algoritm
     return (
-      <View style={{flex:1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{alignItems: 'center', justifyContent:'center'}}>
         <TouchableOpacity onPress={()=>this.shareResults()}>
-            <View>
-                <Text>Share{'\n'}</Text>
+            <View style={{ backgroundColor: 'white', width: 200, height: 50, marginTop: 200, justifyContent: 'center', alignItems: 'center'}}>
+                <Text style = {{ backgroundColor: 'white', width: 200, height: 50, marginTop: 20, justifyContent: 'center'}}>SHARE</Text>
             </View>
         </TouchableOpacity>
         
-        <TouchableOpacity onPress={()=>{console.log(Quit) }}>
-            <View>
-                <Text>Quit</Text>
-            </View>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.quit()}>
+          <View style={{ backgroundColor: 'white', width: 200, height: 50, marginTop: 1200, justifyContent: 'center', alignItems:'center'}} >
+              <Text style={{fontSize: 20, textAlign: 'center'}}>QUIT</Text>
+          </View>
+      </TouchableOpacity>
       </View>
     );
   }
