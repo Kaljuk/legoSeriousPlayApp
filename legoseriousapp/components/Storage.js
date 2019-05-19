@@ -8,7 +8,7 @@ import { AsyncStorage } from 'react-native';
  * @function save
  */
 const Storage = function() {
-
+  
 }
 
 
@@ -17,8 +17,8 @@ const Storage = function() {
  * 
  * @returns {Promise<Object|Boolean>} False if error|no value Otherwise the value
  */
-Storage.load = function(name) {
-  AsyncStorage.getItem(name)
+Storage.prototype.load = function(name) {
+  return AsyncStorage.getItem(name)
   .then( (value) => value )
   .catch( err => {
     console.log(err);
@@ -33,7 +33,7 @@ Storage.load = function(name) {
  * 
  * @returns {Boolean} True if success Otherwise false
  */
-Storage.save = function(name, value) {
+Storage.prototype.save = function(name, value) {
   return AsyncStorage.setItem(name, value)
   .then( () => true)
   .catch( err => {
@@ -41,6 +41,10 @@ Storage.save = function(name, value) {
     console.log(`Error saving item ${name} with value ${value}`);
     return false;
   })
+}
+
+export const createStorageManager = function() {
+  return new Storage();
 }
 
 export default Storage;
