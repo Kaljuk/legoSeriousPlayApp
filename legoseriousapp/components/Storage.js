@@ -13,7 +13,9 @@ const Storage = function() {
 
 
 /**
- * @returns {Object|Boolean} False if error|no value Otherwise the value
+ * @param {String} name Name of the key to get the value from localstorage
+ * 
+ * @returns {Promise<Object|Boolean>} False if error|no value Otherwise the value
  */
 Storage.load = function(name) {
   AsyncStorage.getItem(name)
@@ -26,6 +28,9 @@ Storage.load = function(name) {
 }
 
 /**
+ * @param {String} name  Key for the value
+ * @param {String} value Value
+ * 
  * @returns {Boolean} True if success Otherwise false
  */
 Storage.save = function(name, value) {
