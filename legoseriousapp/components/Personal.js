@@ -8,6 +8,11 @@ import {
 // Games
 import QuestionScreen from './Screens/Game-screen/QuestionScreen'
 
+// Storage module
+import { createStorageManager } from './Storage'
+const StorageManager = createStorageManager();
+
+
 // EventButton
 import EventButton from './EventButton';
 
@@ -49,14 +54,23 @@ export default class Personal extends React.Component {
       }  
     }
   
+    // aka, when the eventButton is pressed
     selectContent(contentType=null, contentData=null) {
         console.log('Selected data', contentData);
+        // Set game played state to true
         
-      contentType = contentType || QuestionScreen;
-      this.setState({ contentType: contentType, contentData: contentData}, () => this.showContent());
+        StorageManager.save('collabStarted', "Jah")
+        .then((info) => console.log('Saved', info))
+        .catch(err => console.log('Not saved', err));
+
+        contentType = contentType || QuestionScreen;
+        this.setState({ contentType: contentType, contentData: contentData}, () => this.showContent());
     }
   
     showContent() {
+        StorageManager.load('collabStarted')
+        .then(val => console.log('Value of collabStarted',val))
+        .catch(err => console.log('[Error] Personal: ', err))
       this.setState({ showContent: true });
     }
     hideContent() {
@@ -66,7 +80,6 @@ export default class Personal extends React.Component {
 
     render() {
         // console.log('DATA', this.props.navigation.state.params.data.content);
-        
 
         const callable = this.openNavigator || (() => console.log('SideMenuButton: Callable'));
         // Title of the current path
