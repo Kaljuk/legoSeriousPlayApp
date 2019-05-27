@@ -41,12 +41,8 @@ export default class VideoSlide extends React.Component {
 							source={IntroVideo}
 							style={styles.video}
 							resizeMode="cover"
-							//source={IntroVideo}
-							//source={{ uri:  'http://www.piksar.ee/wp-content/uploads/2019/05/introVideoLSP.mp4' }}
-							//shouldPlay={this.state.shouldPlay}
-							//resizeMode="cover"
-							//style={{ width: 350, height: 350 }}
-							//isMuted={this.state.mute}
+							style={{ width, height: 330 }}
+							isMuted={this.state.mute}
 						/>
 {/*						<View style={styles.controlBar}>
 								<MaterialIcons 

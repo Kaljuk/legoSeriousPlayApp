@@ -29,8 +29,7 @@ export default class QuestionScreen extends Component {
         if(index == 1) {
             this.setState({index:0})
         } else if(index == 2) {
-            const callabale = this.props.quit || (()=>console.log('quit missing'))
-            callabale();
+           console.log('quit')
         } else if (index == 3) { // Share results
             console.log('Sharing results');
             

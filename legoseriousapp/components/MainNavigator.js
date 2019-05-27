@@ -19,6 +19,7 @@ import OptionScreen from './Screens/OptionScreen';
 import Personal from './Personal';
 import Team from './Team';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
+import MindGameScreen from './Screens/Game-screen/MindGameScreen';
 
 // Screen for all the events (little action bubbles you press in Team | Alone)
 import EventScreen from './Screens/EventScreen';
@@ -65,17 +66,19 @@ class DrawerContainer extends Component {
           const isHighlighted = (id === this.state.pressedTab) || isSelected;
           
           const navigateToRoute = route.screen && (() => { 
-              console.log("Routes",route);
-              console.log('Navigating to', route.title);
-              const data = {
-                  title: route.title,
-                  mainColor: route.mainColor,
-                  secondaryColor: route.secondaryColor,
-                  content: route.content
-              }
-              this.setState({ selectedTab: id })
-              navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
-              navigation.closeDrawer();
+            console.log("Routes",route);
+            console.log('Navigating to', route.title);
+            const data = {
+                title: route.title,
+                mainColor: route.mainColor,
+                secondaryColor: route.secondaryColor,
+                content: route.content
+            }
+            this.setState({ selectedTab: id })
+            console.log("Sending data", data);
+            
+            navigation.navigate( route.screen, { test: 'TestInject', data: data, choosePath: this.choosePath});
+            navigation.closeDrawer();
           }) || (() => console.log('No Screen Assigned'));
           
           const textColor = (isHighlighted) ? '#fff' : '#808080';
@@ -137,12 +140,16 @@ const SideMenu = createDrawerNavigator({
     },
     Game: {
         screen: QuestionScreen
-    }
-  },
+    },
+  
+  MindGame: {
+    screen: MindGameScreen
+  }},
   {
     initialRouteName: 'Intro',
     contentComponent: DrawerContainer
   }
+
 );
 
 class MainNavigator extends Component { 
@@ -154,3 +161,5 @@ class MainNavigator extends Component {
 }
 
 export default MainNavigator;
+
+
