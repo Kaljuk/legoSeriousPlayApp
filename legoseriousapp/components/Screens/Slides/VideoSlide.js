@@ -1,7 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Video } from 'expo';
+//import Video from 'react-native-video';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
+//import {Platform, StyleSheet} from 'react-native';
+
+const IntroVideo = require('./../../../assets/videos/introVideoLSP.mp4');
+
+
 
 export default class VideoSlide extends React.Component {
 	state = {
@@ -27,29 +33,35 @@ export default class VideoSlide extends React.Component {
 		
     return (
       <View style={styles.container}>
-				<View>
+					<View>
 						<Text style={{ textAlign: 'center' }}> What is Lego Serious Play? </Text>
 						<Video
-							source={require('./../../../assets/videos/introVideoLSP.mp4')}
-							shouldPlay={this.state.shouldPlay}
+							isLooping
+							shouldPlay
+							source={IntroVideo}
+							style={styles.video}
 							resizeMode="cover"
-							style={{ width, height: 350 }}
-							isMuted={this.state.mute}
+							//source={IntroVideo}
+							//source={{ uri:  'http://www.piksar.ee/wp-content/uploads/2019/05/introVideoLSP.mp4' }}
+							//shouldPlay={this.state.shouldPlay}
+							//resizeMode="cover"
+							//style={{ width: 350, height: 350 }}
+							//isMuted={this.state.mute}
 						/>
-						<View style={styles.controlBar}>
-							<MaterialIcons 
-								name={this.state.mute ? "volume-mute" : "volume-up"}
-								size={45} 
-								color="white" 
-								onPress={this.handleVolume} 
-							/>
-							<MaterialIcons 
-								name={this.state.shouldPlay ? "pause" : "play-arrow"} 
-								size={45} 
-								color="white" 
-								onPress={this.handlePlayAndPause} 
-							/>
-						</View>
+{/*						<View style={styles.controlBar}>
+								<MaterialIcons 
+									name={this.state.mute ? "volume-mute" : "volume-up"}
+									size={45} 
+									color="white" 
+									onPress={this.handleVolume} 
+								/>
+								<MaterialIcons 
+									name={this.state.shouldPlay ? "pause" : "play-arrow"} 
+									size={45} 
+									color="white" 
+									onPress={this.handlePlayAndPause} 
+								/>
+						</View>*/}
 					</View>
       </View>
 		);
@@ -73,5 +85,16 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: "rgba(0, 0, 0, 0.5)",
-	}
+	},
+	wrapper: {
+    flex: 1
+  },
+  video: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+		bottom: 0,
+
+  }
 });

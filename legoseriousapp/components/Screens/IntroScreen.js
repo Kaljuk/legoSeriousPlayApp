@@ -6,7 +6,6 @@ import {
   View,
   TouchableOpacity,
   Image,
-
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import logo from '../../assets/Group.png';
@@ -65,6 +64,7 @@ export default class IntroScreen extends Component {
 
           <View style={styles.slide1}>
             <VideoSlide />
+            
           </View>
 
           <View style={styles.slide2}>

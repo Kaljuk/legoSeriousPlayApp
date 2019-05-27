@@ -2,7 +2,6 @@ import React from 'react';
 import {
     View, ScrollView,
     TouchableOpacity,
-
     Text
 } from 'react-native';
 
