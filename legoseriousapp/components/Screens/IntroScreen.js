@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import logo from '../../assets/Group.png';
+import backgroundPic from '../../assets/seriousplayapp.jpg';
 import VideoSlide from './Slides/VideoSlide';
 import OptionScreen from './OptionScreen';
 
@@ -56,10 +57,13 @@ export default class IntroScreen extends Component {
         <Swiper style={styles.wrapper} showsButtons={true}>
 
           <View style={styles.slide0}>
-              <Image source={logo} style={{width: 180, height: 75}}/>
-                  <View style={styles.textBox}>
+            <Image source={backgroundPic}  style={{width: 400, height: 700}}></Image>
+                {/*<Image source={logo} style={{width: 180, height: 75}}/>
+                <View style={styles.textBox}>
                     <Text style={{color:'white', fontSize: 18, textAlign: 'center'}}>Learn LEGO® Serious Play® Methodology for  communication, creativity and challenges</Text>
-                  </View>
+                </View>*/}
+            
+              
           </View>
 
           <View style={styles.slide1}>
