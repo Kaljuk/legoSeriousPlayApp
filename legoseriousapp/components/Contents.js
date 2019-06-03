@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
+import OptionScreen from './Screens/OptionScreen';
 export default contents = {
   core: {
     collabGame: {
@@ -152,7 +153,6 @@ export const mainRoutes = [
       content: coreContent,
       icon: 'database'
   },
-
   { 
       title: 'Personal', 
       screen: 'Personal', 
@@ -185,7 +185,7 @@ export const mainRoutes = [
   },
   { 
       title: 'Settings', 
-      screen: 'Game',//'Settings', 
+      screen: 'Settings', 
       mainColor: '#4c4c4c', 
       secondaryColor: null,
       content: [],
@@ -194,13 +194,13 @@ export const mainRoutes = [
   // // Sound
 
   // // About
-/*  { 
+  { 
     title: 'About', 
     screen: 'About',//'Settings', 
     mainColor: '#4c4c4c', 
     secondaryColor: null,
     content: [],
-    icon: 'gear'
+    icon: ""
 }
-*/
+
 ] 

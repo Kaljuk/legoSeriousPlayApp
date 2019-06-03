@@ -3,9 +3,6 @@ import { Text, View, TouchableOpacity, Image } from 'react-native';
 
 //import { mainRoutes } from './Contents';
 
-
-
-
 export default class OptionScreen extends Component {
   constructor(props) {
     super(props);

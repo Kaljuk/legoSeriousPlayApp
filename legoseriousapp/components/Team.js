@@ -66,9 +66,9 @@ export default class Team extends React.Component {
         const secondaryColor = this.props.secondaryColor || '#c1911b';
         
         // Icon = picture on the content button, isNew: has the user clicked on it before?
-        const rowOne = [{ title: 'Tut', icon: null, isNew: false }]
-        const rowTwo = [{ title: 'Vid', icon: null, isNew: false }]        
-        const rowThree = [{ title: 'Infographic', icon: null, isNew: true }, { title: 'Infographic', icon: null, isNew: true }]
+        const rowOne = [{ title: 'Video3', icon: null, isNew: false }]
+        const rowTwo = [{ title: 'Video4', icon: null, isNew: false }]        
+        const rowThree = [{ title: 'Video 5', icon: null, isNew: true }, { title: 'Video6', icon: null, isNew: true }]
         const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true, contentType: 'questionGame' }]
 
         

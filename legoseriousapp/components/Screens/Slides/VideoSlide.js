@@ -7,8 +7,6 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 const IntroVideo = require('./../../../assets/videos/introVideoLSP.mp4');
 
-
-
 export default class VideoSlide extends React.Component {
 	state = {
 		mute: false,
@@ -39,10 +37,13 @@ export default class VideoSlide extends React.Component {
 							isLooping
 							shouldPlay
 							source={IntroVideo}
-							style={styles.video}
+							//source={DemoVideo}
+							//source={{ uri: 'https://player.vimeo.com/video/336903240' }}
+							//style={styles.video}
 							resizeMode="cover"
 							style={{ width, height: 330 }}
 							isMuted={this.state.mute}
+
 						/>
 {/*						<View style={styles.controlBar}>
 								<MaterialIcons 

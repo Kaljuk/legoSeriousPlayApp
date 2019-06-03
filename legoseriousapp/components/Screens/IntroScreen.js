@@ -8,7 +8,6 @@ import {
   Image,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import logo from '../../assets/Group.png';
 import backgroundPic from '../../assets/seriousplayapp.jpg';
 import VideoSlide from './Slides/VideoSlide';
 import OptionScreen from './OptionScreen';
@@ -35,17 +34,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#cc5490',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    position: 'absolute'
-  },
-  textBox: {
-    marginTop: 50,
-    marginLeft: 50,
-    marginRight: 50,
   }
 })
 
@@ -58,19 +46,10 @@ export default class IntroScreen extends Component {
 
           <View style={styles.slide0}>
             <Image source={backgroundPic}  style={{width: 400, height: 700}}></Image>
-                {/*<Image source={logo} style={{width: 180, height: 75}}/>
-                <View style={styles.textBox}>
-                    <Text style={{color:'white', fontSize: 18, textAlign: 'center'}}>Learn LEGO® Serious Play® Methodology for  communication, creativity and challenges</Text>
-                </View>*/}
-            
-              
           </View>
-
           <View style={styles.slide1}>
             <VideoSlide />
-            
           </View>
-
           <View style={styles.slide2}>
               <TouchableOpacity onPress={()=> this.props.navigation.navigate('Option') & console.log("aa")}>
                   <View style={{ marginBottom: 580, marginLeft: 300, position: "relative"}}>

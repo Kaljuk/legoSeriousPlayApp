@@ -4,8 +4,11 @@
     "description": "This project is really great.",
     "slug": "legoseriousapp",
     "privacy": "public",
-    "sdkVersion": "30.0.0",
-    "platforms": ["android", "ios"],
+    "sdkVersion": "31.0.0",
+    "platforms": [
+      "android",
+      "ios"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
