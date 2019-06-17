@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import OptionScreen from './Screens/OptionScreen';
+
+//import legoHead from '~/assets/Layer5.png';
+
 export default contents = {
   core: {
     collabGame: {
@@ -134,26 +137,58 @@ const coreContent = [
   ]
 ]
 
-// // // Main Routes 
+// Main Routes 
 export const mainRoutes = [
-  // // Profile
+  // icons from: https://octicons.github.com/
   { 
       title: 'Profile', 
       screen: null, 
       mainColor: '#FF8674', 
       secondaryColor: null,
       content: [],
-      icon: 'dash'
+      icon: "person"
   },
   { 
+    title: 'Core', 
+    screen: "Core", 
+    mainColor: '#FF8674', 
+    secondaryColor: null,
+    content: [],
+    icon: 'database'
+  },
+  { 
+    title: 'Personal', 
+    screen: null, 
+    mainColor: '#FF8674', 
+    secondaryColor: null,
+    content: [],
+    icon: 'heart'
+  },
+  { 
+    title: 'Education', 
+    screen: null, 
+    mainColor: '#FF8674', 
+    secondaryColor: null,
+    content: [],
+    icon: 'mortar-board'
+  },
+  { 
+    title: 'Business', 
+    screen: null, 
+    mainColor: '#FF8674', 
+    secondaryColor: null,
+    content: [],
+    icon: 'briefcase'
+  },
+  /*{ 
       title: 'Team', 
       screen: 'Team', 
       mainColor: '#f9c137', 
       secondaryColor: '#bf942a',
       content: coreContent,
       icon: 'database'
-  },
-  { 
+  },*/
+  /*{ 
       title: 'Personal', 
       screen: 'Personal', 
       mainColor: '#88c9b3', 
@@ -182,7 +217,7 @@ export const mainRoutes = [
           
           },{ title: 'Practical Game' }] ],
       icon: 'person'
-  },
+  }*/,
   { 
       title: 'Settings', 
       screen: 'Settings', 
@@ -196,7 +231,7 @@ export const mainRoutes = [
   // // About
   { 
     title: 'About', 
-    screen: 'About',//'Settings', 
+    screen: 'About', 
     mainColor: '#4c4c4c', 
     secondaryColor: null,
     content: [],

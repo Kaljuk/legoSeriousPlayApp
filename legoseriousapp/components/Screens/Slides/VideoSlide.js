@@ -68,7 +68,7 @@ export default class VideoSlide extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    //backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
 	},
@@ -86,12 +86,12 @@ const styles = StyleSheet.create({
 	wrapper: {
     flex: 1
   },
-  video: {
+  /*video: {
     position: "absolute",
     top: 0,
     left: 0,
     right: 0,
 		bottom: 0,
 
-  }
+  }*/
 });
