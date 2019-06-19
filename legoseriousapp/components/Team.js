@@ -60,15 +60,15 @@ export default class Team extends React.Component {
     render() {
         const callable = this.openNavigator || (() => console.log('SideMenuButton: Callable'));
         // Title of the current path
-        const title = this.props.title || 'Team';
+        const title = this.props.title || 'Core';
         // Colors
         const mainColor = this.props.mainColor || '#F9C137';
         const secondaryColor = this.props.secondaryColor || '#c1911b';
         
         // Icon = picture on the content button, isNew: has the user clicked on it before?
-        const rowOne = [{ title: 'Video3', icon: null, isNew: false }]
-        const rowTwo = [{ title: 'Video4', icon: null, isNew: false }]        
-        const rowThree = [{ title: 'Video 5', icon: null, isNew: true }, { title: 'Video6', icon: null, isNew: true }]
+        const rowOne = [{ title: 'Etiquette', icon: null, isNew: false }]
+        const rowTwo = [{ title: 'Build', icon: null, isNew: false }]        
+        const rowThree = [{ title: 'Storytelling', icon: null, isNew: true }, { title: 'Metaphor', icon: null, isNew: true }]
         const rowFour = [{ title: 'Mind game', icon: null, isNew: true }, { title: 'Collab Game', icon: null, isNew: true }, { title: 'Practical Game', icon: null, isNew: true, contentType: 'questionGame' }]
 
         
@@ -119,7 +119,7 @@ export default class Team extends React.Component {
                 flexDirection: 'column',
                 backgroundColor: mainColor 
             }}>
-            <View style={{marginTop: 35, marginLeft:25}}>
+            <View style={{marginTop: 35, marginLeft:'4%'}}>
                 <TouchableOpacity onPress={() => callable()}>
                     <MenuIcon />
                 </TouchableOpacity>

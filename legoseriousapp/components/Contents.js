@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import OptionScreen from './Screens/OptionScreen';
 
+//import OptionScreen from './Screens/OptionScreen';
+//import PersonalScreen from './Screens/PersonalScreen';
 //import legoHead from '~/assets/Layer5.png';
 
 export default contents = {
@@ -150,32 +151,32 @@ export const mainRoutes = [
   },
   { 
     title: 'Core', 
-    screen: "Core", 
-    mainColor: '#FF8674', 
+    screen: "OptionScreen", 
+    mainColor: '#F9C137', 
     secondaryColor: null,
     content: [],
     icon: 'database'
   },
   { 
     title: 'Personal', 
-    screen: null, 
-    mainColor: '#FF8674', 
+    screen: 'PersonalScreen', 
+    mainColor: '#88C9B3', 
     secondaryColor: null,
     content: [],
     icon: 'heart'
   },
   { 
     title: 'Education', 
-    screen: null, 
-    mainColor: '#FF8674', 
+    screen: 'EducationScreen', 
+    mainColor: '#B06495', 
     secondaryColor: null,
     content: [],
     icon: 'mortar-board'
   },
   { 
     title: 'Business', 
-    screen: null, 
-    mainColor: '#FF8674', 
+    screen: 'BusinessScreen', 
+    mainColor: '#4F4F94', 
     secondaryColor: null,
     content: [],
     icon: 'briefcase'
@@ -231,8 +232,8 @@ export const mainRoutes = [
   // // About
   { 
     title: 'About', 
-    screen: 'About', 
-    mainColor: '#4c4c4c', 
+    screen: 'AboutScreen', 
+    mainColor: '#E5E5E5', 
     secondaryColor: null,
     content: [],
     icon: ""

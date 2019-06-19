@@ -7,7 +7,7 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 const IntroVideo = require('./../../../assets/videos/introVideoLSP.mp4');
 
-export default class VideoSlide extends React.Component {
+export default class ShareSkills extends React.Component {
 	state = {
 		mute: false,
 		fullScreen: false,
@@ -32,8 +32,8 @@ export default class VideoSlide extends React.Component {
     return (
       <View style={styles.container}>
 					<View>
-						<Text style={{ textAlign: 'center' }}> LEGO® Serious Play® </Text>
-						<Text style={{ textAlign: 'center' }}> Use LEGO bricks to make sense of yourself and communicate better with others </Text>
+						<Text style={{ textAlign: 'center' }}> Share your skills </Text>
+						<Text style={{ textAlign: 'center' }}> Share your skills with your friends and engage them in your games </Text>
 						<Video
 							isLooping
 							shouldPlay

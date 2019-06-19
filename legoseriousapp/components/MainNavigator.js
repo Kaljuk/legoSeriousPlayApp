@@ -16,10 +16,14 @@ const TabIcon = (props={}) => (
 //import Screens
 import IntroScreen from './Screens/IntroScreen';
 import OptionScreen from './Screens/OptionScreen';
+import PersonalScreen from './Screens/PersonalScreen';
+import EducationScreen from './Screens/EducationScreen';
+import BusinessScreen from './Screens/BusinessScreen';
 import Personal from './Personal';
 import Team from './Team';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 import MindGameScreen from './Screens/Game-screen/MindGameScreen';
+import AboutScreen from './Screens/AboutScreen';
 
 // Screen for all the events (little action bubbles you press in Team | Alone)
 import EventScreen from './Screens/EventScreen';
@@ -127,10 +131,22 @@ class DrawerContainer extends Component {
 
 const SideMenu = createDrawerNavigator({
     Intro: {
-        screen: IntroScreen,
+        screen: IntroScreen
     },
-    Option: {
-        screen: OptionScreen,
+    OptionScreen: {
+        screen: OptionScreen
+    },
+    PersonalScreen: {
+        screen: PersonalScreen
+    },
+    EducationScreen: {
+        screen: EducationScreen
+    },
+    BusinessScreen: {
+        screen: BusinessScreen
+    },
+    AboutScreen: {
+        screen: AboutScreen
     },
     Team: {
         screen: Team
@@ -141,12 +157,11 @@ const SideMenu = createDrawerNavigator({
     Game: {
         screen: QuestionScreen
     },
-  
-  MindGame: {
-    screen: MindGameScreen
-  }},
+     MindGame: {
+        screen: MindGameScreen
+    }},
   {
-    initialRouteName: 'Intro',
+    initialRouteName: 'AboutScreen',
     contentComponent: DrawerContainer
   }
 

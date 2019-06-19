@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
 import { Video } from 'expo';
 //import Video from 'react-native-video';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
@@ -7,7 +7,7 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 const IntroVideo = require('./../../../assets/videos/introVideoLSP.mp4');
 
-export default class VideoSlide extends React.Component {
+export default class LastVideo extends React.Component {
 	state = {
 		mute: false,
 		fullScreen: false,
@@ -32,8 +32,8 @@ export default class VideoSlide extends React.Component {
     return (
       <View style={styles.container}>
 					<View>
-						<Text style={{ textAlign: 'center' }}> LEGO® Serious Play® </Text>
-						<Text style={{ textAlign: 'center' }}> Use LEGO bricks to make sense of yourself and communicate better with others </Text>
+						<Button style={{ textAlign: 'center' }}>Send the infographic to my e-mail</Button>
+						<Button style={{ textAlign: 'center' }}>Learn more about LSP</Button>
 						<Video
 							isLooping
 							shouldPlay
