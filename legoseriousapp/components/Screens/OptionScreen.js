@@ -5,20 +5,31 @@ import Icon from 'react-native-vector-icons/Octicons';
 
 //import { mainRoutes } from './Contents';
 
-export default class OptionScreen extends Component {
+export default class OptionScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.openNavigator = this.openNavigator.bind(this);
+  }
+
+  openNavigator() {
+    if ((this.props.navigation || {}).navigate) {
+      this.props.navigation.openDrawer() 
+    }  
   }
   
   render() {
+    const callable = this.openNavigator || (() => console.log('SideMenuButton: Callable'));
+
     return (
         <View style={{flex:1, backgroundColor: '#F9C137'}}>
-            <Icon name='three-bars' size={30} color='#000' style={{marginTop: 35, marginLeft:'4%'}}/>
+            <TouchableOpacity onPress={() => callable()}>
+                    <Icon name='three-bars' size={30} color='#000' style={{marginTop: 35, marginLeft:'4%'}}/>
+            </TouchableOpacity>
             <Text style={{fontSize: 45, color: 'white', marginTop:'1%', marginLeft:'4%', fontWeight:'500'}}>CORE</Text>
             <Text style={{fontSize:14, color:'white', marginTop: '2%', marginLeft:'4%'}}>Learn the basics of LEGO Serious Play. How to use LEGO bricks for communication, creativity and new ideas</Text>
             <Image style={{justifyContent: 'center', alignItems:'center', marginLeft: '16%', marginTop:'7%', marginBottom:'7%'}} source={require("./../../assets/pictures/Group4.png")}></Image>
             <View style={{justifyContent:'center', alignItems:'center', }}>
-              <TouchableOpacity onPress={()=> this.props.navigation.navigate('Team')}>
+              <TouchableOpacity onPress={()=> this.props.navigation.navigate('CoreAloneScreen')}>
                   <Text style={{
                     fontSize: 25, color: 'white', 
                     marginBottom: '5%',marginTop: '5%',borderWidth: 1, 
@@ -30,7 +41,7 @@ export default class OptionScreen extends Component {
                     ALONE
                   </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={()=> this.props.navigation.navigate('Team')}>
+              <TouchableOpacity onPress={()=> this.props.navigation.navigate('SelectScreen')}>
                   <Text style={{
                     fontSize: 25, color: 'white',
                     borderWidth: 1, borderRadius: 10, 

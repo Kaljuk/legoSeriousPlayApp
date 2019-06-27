@@ -13,7 +13,7 @@ const TabIcon = (props={}) => (
   />
 );
 
-//import Screens
+//import all screens
 import IntroScreen from './Screens/IntroScreen';
 import OptionScreen from './Screens/OptionScreen';
 import PersonalScreen from './Screens/PersonalScreen';
@@ -24,6 +24,22 @@ import Team from './Team';
 import QuestionScreen from './Screens/Game-screen/QuestionScreen';
 import MindGameScreen from './Screens/Game-screen/MindGameScreen';
 import AboutScreen from './Screens/AboutScreen';
+import VideoSlide from './Screens/Slides/VideoSlide';
+import GuidedVideos from './Screens/Slides/GuidedVideos';
+import LastVideo from './Screens/Slides/LastVideo';
+import MiniGames from './Screens/Slides/MiniGames';
+import ShareSkills from './Screens/Slides/ShareSkills';
+import WhatDoYouNeedVideo from './Screens/Slides/WhatDoYouNeedVideo';
+import LearnMore from './Screens/Slides/LearnMore';
+import SelectScreen from './Screens/SelectScreen';
+import CoreAloneScreen from './Screens/CoreAloneScreen';
+import SelectedPersonalScreen from './Screens/SelectedPersonalScreen';
+import SelectedEducationScreen from './Screens/SelectedEducationScreen';
+import SelectedBusinessScreen from './Screens/SelectedBusinessScreen';
+import EtiquetteScreen from './Screens/Slides/EtiquetteScreen';
+import HowToBuildScreen from './Screens/Slides/HowToBuildScreen';
+import StorytellingScreen from './Screens/Slides/StorytellingScreen';
+import MetaphorsScreen from './Screens/Slides/MetaphorsScreen';
 
 // Screen for all the events (little action bubbles you press in Team | Alone)
 import EventScreen from './Screens/EventScreen';
@@ -53,14 +69,14 @@ class DrawerContainer extends Component {
   render() {
       const { navigation } = this.props;
 
-      const menuTabData = [
+      /*const menuTabData = [
           // { color: "#003DA5", text: "Business",  target: 'Home' },
           // { color: "#E93CAC", text: "Slides|Education", target: 'Slides' }, // #ECB3CB
           { color: "#A2E4B8", text: "Branches",  target: 'Branches' },
           
           { color: "#FFCD00", text: "Core", target: 'Feed' },
           { color: "#192837", text: "Load", target: 'Loading' }
-      ];
+      ];*/
 
       const routes = mainRoutes;
       
@@ -130,7 +146,7 @@ class DrawerContainer extends Component {
 
 
 const SideMenu = createDrawerNavigator({
-    Intro: {
+    IntroScreen: {
         screen: IntroScreen
     },
     OptionScreen: {
@@ -148,7 +164,7 @@ const SideMenu = createDrawerNavigator({
     AboutScreen: {
         screen: AboutScreen
     },
-    Team: {
+    CoreTeam: {
         screen: Team
     },
     Personal: {
@@ -157,13 +173,62 @@ const SideMenu = createDrawerNavigator({
     Game: {
         screen: QuestionScreen
     },
-     MindGame: {
+    VideoSlide:{
+        screen: VideoSlide
+    },
+    GuidedVideoScreen:{
+        screen: GuidedVideos
+    },
+    LastVideoScreen:{
+        screen: LastVideo
+    },
+    MiniGameScreen:{
+        screen: MiniGames
+    },
+    ShareSkillScreen:{
+        screen: ShareSkills
+    },
+    WhatDoYouNeedVideoScreen:{
+        screen: WhatDoYouNeedVideo
+    },
+    LearnMoreScreen:{
+        screen: LearnMore
+    },
+    SelectScreen:{
+        screen: SelectScreen
+    },
+    CoreAloneScreen:{
+        screen: CoreAloneScreen
+    },
+    SelectedPersonalScreen:{
+        screen: SelectedPersonalScreen
+    },
+    SelectedEducationScreen:{
+        screen: SelectedEducationScreen
+    },
+    SelectedBusinessScreen:{
+        screen: SelectedBusinessScreen
+    },
+    EtiquetteScreen:{
+        screen: EtiquetteScreen
+    },
+    HowToBuildScreen:{
+        screen: HowToBuildScreen
+    },
+    StorytellingScreen:{
+        screen: StorytellingScreen
+    },
+    MetaphorsScreen:{
+        screen: MetaphorsScreen
+    },
+    MindGame: {
         screen: MindGameScreen
     }},
-  {
-    initialRouteName: 'AboutScreen',
-    contentComponent: DrawerContainer
-  }
+    {
+        //Mis screeni expo kohe peale js-reloadi näitab:
+        initialRouteName: 'IntroScreen',
+        contentComponent: DrawerContainer
+     }
 
 );
 

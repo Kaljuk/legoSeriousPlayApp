@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-    View, ScrollView,
-    TouchableOpacity,
-    Text
-} from 'react-native';
-
-
+import { View, ScrollView, TouchableOpacity, Text, } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
+
 const MenuIcon = () => (
   <Icon 
     name='three-bars' 
@@ -23,12 +18,17 @@ export default class Team extends React.Component {
           showContent: false,
   
           contentType: null,
-          contentData: null
+          contentData: null,
+          modalVisible: false,
         }
         this.openNavigator = this.openNavigator.bind(this);
         this.selectContent = this.selectContent.bind(this);
         this.hideContent   = this.hideContent.bind(this);
     }
+
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+      }
 
     selectContent(contentType, content) {
         console.log("Selected data", contentType, content)
@@ -78,9 +78,9 @@ export default class Team extends React.Component {
         // console.log('Content', content);
         
         const pathElements = content.map( (elementRow=[], elementRowId) => {
-            
             const elements = elementRow.map( (element={}, elementId) => {
                 const contentTitle = (element.contentData && '*' || '')+element.title || 'Tiitel';
+                
                 return (
                     <TouchableOpacity  key={ elementId } style={{ 
                         height: 100,
@@ -124,6 +124,9 @@ export default class Team extends React.Component {
                     <MenuIcon />
                 </TouchableOpacity>
             </View>
+            <View style={{marginTop: 22}}>
+
+      </View>
             <ScrollView>
                     {/* Header with nav button */}
                     <View style={{ 

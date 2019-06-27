@@ -1,11 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { Video } from 'expo';
-//import Video from 'react-native-video';
-import { MaterialIcons, Octicons } from '@expo/vector-icons';
-//import {Platform, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/Octicons';
 
-const IntroVideo = require('./../../../assets/videos/introVideoLSP.mp4');
+const IntroVideo = require('./../../../assets/videos/03Whatdoyouneed.mp4');
 
 export default class WhatDoYouNeedVideo extends React.Component {
 	state = {
@@ -32,34 +30,31 @@ export default class WhatDoYouNeedVideo extends React.Component {
     return (
       <View style={styles.container}>
 					<View>
-						<Text style={{ textAlign: 'center' }}> What do you need? </Text>
-						<Text style={{ textAlign: 'center' }}> What do you need for this app? </Text>
 						<Video
-							isLooping
 							shouldPlay
 							source={IntroVideo}
-							//source={DemoVideo}
-							//source={{ uri: 'https://player.vimeo.com/video/336903240' }}
-							//style={styles.video}
 							resizeMode="cover"
 							style={{ width, height: 330 }}
 							isMuted={this.state.mute}
-
-						/>
-{/*						<View style={styles.controlBar}>
-								<MaterialIcons 
-									name={this.state.mute ? "volume-mute" : "volume-up"}
-									size={45} 
-									color="white" 
-									onPress={this.handleVolume} 
-								/>
-								<MaterialIcons 
-									name={this.state.shouldPlay ? "pause" : "play-arrow"} 
-									size={45} 
-									color="white" 
-									onPress={this.handlePlayAndPause} 
-								/>
-						</View>*/}
+						/>	
+						<View style={{marginTop: '10%'}}>
+							<Text style={{ textAlign: 'center', fontSize: 22, color: 'white', fontWeight: 'bold' }}> What do you need? </Text>
+							<Text style={{ marginTop: '3%', textAlign: 'center', fontSize: 20, color: 'white' }}> What do you need for this app? </Text>
+						</View>
+					</View>
+					<View style={{position: "absolute", bottom: '5%', right: '10%'}}>
+								<TouchableOpacity onPress={()=> this.props.navigation.navigate('LearnMoreScreen')}>
+										<Text style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}>Next  &nbsp;   
+											<Icon name='chevron-right' size={22} color='#fff' />                 
+										</Text>
+								</TouchableOpacity>
+					</View>
+					<View style={{position: "absolute", bottom: '5%', left: '10%'}}>
+								<TouchableOpacity onPress={()=> this.props.navigation.navigate('ShareSkillScreen')}>
+                  <Text style={{ fontSize: 22, fontWeight: 'bold', color: 'white' }}>&nbsp;   
+                     <Icon name='chevron-left' size={22} color='#fff' />Back                
+                  </Text>
+              </TouchableOpacity>
 					</View>
       </View>
 		);
@@ -69,7 +64,7 @@ export default class WhatDoYouNeedVideo extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: '#fff',
+    backgroundColor: '#B06495',
     alignItems: 'center',
     justifyContent: 'center',
 	},
@@ -87,12 +82,4 @@ const styles = StyleSheet.create({
 	wrapper: {
     flex: 1
   },
-  /*video: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-		bottom: 0,
-
-  }*/
 });

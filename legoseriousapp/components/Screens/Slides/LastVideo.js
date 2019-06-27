@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
 import { Video } from 'expo';
-//import Video from 'react-native-video';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
-//import {Platform, StyleSheet} from 'react-native';
+
 
 const IntroVideo = require('./../../../assets/videos/introVideoLSP.mp4');
 
