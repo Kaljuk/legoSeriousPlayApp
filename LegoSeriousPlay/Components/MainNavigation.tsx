@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import {
-  View,
-  Text
-} from 'react-native';
+import { createAppContainer, NavigationContainer } from 'react-navigation';
 
-export default class MainNavigation extends Component {
-  /**
-   *
-   */
-  constructor(props) {
-    super(props);
+import { createDrawerNavigator } from 'react-navigation-drawer';
+
+// Screens
+import ProfileScreen from './Screens/ProfileScreen';
+import IntroScreen from './Screens/IntroScreen';
+import PathScreen from './Screens/PathScreen';
+
+const MainDrawer = createDrawerNavigator({
+  Intro: {
+    screen: IntroScreen
+  },
+  Profile: {
+    screen: ProfileScreen
+  },
+  Path: {
+    screen: PathScreen
   }
+}, {
+  initialRouteName: 'Intro'
+});
 
-  render() {
-
-    return (
-      <View>
-        <Text>
-          MainNavigation
-        </Text>
-      </View>
-    )
-  }
-}
+export default createAppContainer(MainDrawer);
+// export default MainNavigation;
