@@ -5,9 +5,7 @@ import {
 
 
 export default class IntroScreen extends Component {
-  /**
-   *
-   */
+
   constructor(props) {
     super(props);
   }

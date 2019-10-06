@@ -18,7 +18,7 @@ const MainDrawer = createDrawerNavigator({
     screen: PathScreen
   }
 }, {
-  initialRouteName: 'Intro'
+  initialRouteName: 'Profile'
 });
 
 export default createAppContainer(MainDrawer);
