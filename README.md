@@ -6,9 +6,9 @@ LEGO Serious Play App
 
 ### Pages
 #### [] Profile Page
-- [] Profile picture
-- [] Status / Progress snippet
+- [ ] Profile picture
+- [ ] Status / Progress snippet
 
 #### [] Settings page
-- [] Links to LSP content
-- [] Contributors
+- [ ] Links to LSP content
+- [ ] Contributors
