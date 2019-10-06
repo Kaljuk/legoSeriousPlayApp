@@ -1,4 +1,4 @@
-import { createAppContainer, NavigationContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
@@ -22,4 +22,3 @@ const MainDrawer = createDrawerNavigator({
 });
 
 export default createAppContainer(MainDrawer);
-// export default MainNavigation;
